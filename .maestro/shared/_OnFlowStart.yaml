@@ -40,6 +40,14 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
+      visible: 'Continue'
+    commands:
+      - tapOn:
+          text: 'Continue'
+      - waitForAnimationToEnd
+
+- runFlow:
+    when:
       platform: Android
       visible:
         id: "${MAESTRO_APP_ID}:id/bottom_sheet" # id of the android bottom sheet we want to dismiss
