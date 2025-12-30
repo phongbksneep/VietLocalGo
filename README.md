@@ -1,11 +1,31 @@
-# Welcome to your new ignited app!
+# VietLocalGo 🇻🇳
 
-> The latest and greatest boilerplate for Infinite Red opinions
+> App quảng bá ẩm thực và du lịch địa phương Việt Nam
 
-This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way to test bleeding-edge changes to our React Native stack.
+[![React Native](https://img.shields.io/badge/React%20Native-0.73-blue.svg)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-50-black.svg)](https://expo.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![Ignite](https://img.shields.io/badge/Ignite-11.3-red.svg)](https://github.com/infinitered/ignite)
 
-- [Quick start documentation](https://github.com/infinitered/ignite/blob/master/docs/boilerplate/Boilerplate.md)
-- [Full documentation](https://github.com/infinitered/ignite/blob/master/docs/README.md)
+## 📱 Giới thiệu
+
+**VietLocalGo** là ứng dụng mobile giúp du khách khám phá ẩm thực và du lịch địa phương Việt Nam. Bắt đầu từ tỉnh Nam Định với mục tiêu mở rộng ra toàn quốc 63 tỉnh thành.
+
+### ✨ Tính năng chính
+
+- 🗺️ **Khám phá địa điểm** - Tìm kiếm nhà hàng, di tích, đền chùa, làng nghề...
+- 🍜 **Ẩm thực địa phương** - Phở bò gánh, bánh cuốn, nem nắm Nam Định...
+- 📅 **Đặt tour** - Tour tâm linh, ẩm thực, biển với hướng dẫn viên địa phương
+- 👥 **Kết nối hướng dẫn viên** - Chat trực tiếp, đặt lịch dễ dàng
+- 💬 **Cộng đồng** - Chia sẻ trải nghiệm, hỏi đáp, review
+- 🌐 **Đa ngôn ngữ** - Tiếng Việt & English
+- 📍 **Bản đồ tương tác** - Tìm đường, khám phá xung quanh
+
+## 📚 Documentation
+
+- [Design System](./docs/DESIGN_SYSTEM.md) - UI/UX specifications
+- [Coding Guidelines](./.github/copilot-instructions.md) - Development rules
+- [Ignite Docs](https://github.com/infinitered/ignite/blob/master/docs/README.md) - Framework documentation
 
 ## Getting Started
 
