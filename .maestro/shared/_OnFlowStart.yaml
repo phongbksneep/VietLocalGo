@@ -27,14 +27,15 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
-# conditionally run the dev client flow if the words "Development servers" is present.
-# this uses the default maestro timeout and moves on if it doesn't see the text.
+ # conditionally run the dev client flow if the words "Development servers" is present.
+ # this uses the default maestro timeout and moves on if it doesn't see the text.
+ # Use a case-insensitive regex to match different capitalization in various dev clients
 - runFlow:
     when:
-      visible: 'Development servers'
+      visible: '(?i)development servers'
     commands:
       # this regex allows for different hosts and ports
-      - tapOn: "http://.*:.*" 
+      - tapOn: "http://.*:.*"
       - waitForAnimationToEnd
 
 - runFlow:
