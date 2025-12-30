@@ -45,20 +45,20 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
   const slides: OnboardingItem[] = [
     {
       id: "1",
-      title: t("onboarding.slide1Title"),
-      description: t("onboarding.slide1Description"),
+      title: t("onboarding.slide1.title"),
+      description: t("onboarding.slide1.description"),
       image: require("@assets/images/logo.png"),
     },
     {
       id: "2",
-      title: t("onboarding.slide2Title"),
-      description: t("onboarding.slide2Description"),
+      title: t("onboarding.slide2.title"),
+      description: t("onboarding.slide2.description"),
       image: require("@assets/images/logo.png"),
     },
     {
       id: "3",
-      title: t("onboarding.slide3Title"),
-      description: t("onboarding.slide3Description"),
+      title: t("onboarding.slide3.title"),
+      description: t("onboarding.slide3.description"),
       image: require("@assets/images/logo.png"),
     },
   ]

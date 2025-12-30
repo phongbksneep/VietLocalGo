@@ -102,7 +102,7 @@ export function HomeScreen() {
       </Pressable>
 
       {/* Featured Provinces */}
-      {renderSectionHeader(t("home.featuredProvinces"))}
+      {renderSectionHeader(t("home.sections.featuredProvinces"))}
       <FlatList
         data={provinces}
         renderItem={renderProvince}
@@ -124,7 +124,7 @@ export function HomeScreen() {
       />
 
       {/* Nearby Places */}
-      {renderSectionHeader(t("home.nearbyPlaces"), () => {})}
+      {renderSectionHeader(t("home.sections.nearbyPlaces"), () => {})}
       <FlatList
         data={places}
         renderItem={renderPlace}

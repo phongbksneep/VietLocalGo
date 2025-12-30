@@ -38,12 +38,13 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: "http://.*:.*"
       - waitForAnimationToEnd
 
+  # Dismiss any 'Continue' prompt from dev clients (case-insensitive)
 - runFlow:
     when:
-      visible: 'Continue'
+      visible: '(?i)continue'
     commands:
       - tapOn:
-          text: 'Continue'
+          text: '(?i)continue'
       - waitForAnimationToEnd
 
 - runFlow:

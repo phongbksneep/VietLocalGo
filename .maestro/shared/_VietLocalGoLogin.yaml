@@ -26,6 +26,10 @@ appId: ${MAESTRO_APP_ID}
     text: "Đăng nhập"
     optional: true
 
+- tapOn:
+    text: "Login"
+    optional: true
+
 # Enter credentials
 - tapOn:
     text: "Email"
@@ -37,7 +41,7 @@ appId: ${MAESTRO_APP_ID}
     text: "Mật khẩu"
     optional: true
 
-- inputText: "password123"
+- inputText: "password123\n"
 
 # Tap login button
 - tapOn:
@@ -45,8 +49,39 @@ appId: ${MAESTRO_APP_ID}
     index: 1
     optional: true
 
+- tapOn:
+    text: "Login"
+    index: 1
+    optional: true
+
+- tapOn:
+    text: "Sign In"
+    index: 1
+    optional: true
+
+- tapOn:
+    text: "Sign in"
+    index: 1
+    optional: true
+
+- tapOn:
+    text: "Tap to log in!"
+    optional: true
+
+- tapOn:
+    text: "Tap to log in"
+    optional: true
+
+- tapOn:
+    id: "login-button"
+    optional: true
+
+- tapOn:
+    id: "${MAESTRO_APP_ID}:id/login-button"
+    optional: true
+
 # Wait for home screen
 - extendedWaitUntil:
-    visible: "Trang chủ"
-    timeout: 5000
+    visible: '(?i)trang chủ|home|xin chào|welcome|hello'
+    timeout: 8000
     optional: true

@@ -9,5 +9,5 @@ appId: ${MAESTRO_APP_ID} # the app id of the app we want to test
 onFlowStart:
   - runFlow: ../shared/_OnFlowStart.yaml
 ---
-- runFlow: ../shared/_Login.yaml
+- runFlow: ../shared/_VietLocalGoLogin.yaml
 

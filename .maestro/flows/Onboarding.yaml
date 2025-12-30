@@ -2,16 +2,23 @@
 #intent:
 # Test the onboarding flow from start to login screen
 
+# Flow: VietLocalGo Onboarding
+# Test the onboarding flow from start to login screen
+
 appId: ${MAESTRO_APP_ID}
 onFlowStart:
-  - runFlow: ../shared/_OnFlowStart.yaml
+    - runFlow: ../shared/_OnFlowStart.yaml
 ---
-# Check onboarding slides appear
-- assertVisible: 
-    text: "Khám phá địa phương"
+# Try to skip onboarding if possible
+- tapOn:
+    text: "Bỏ qua"
     optional: true
 
-# Swipe through onboarding
+- tapOn:
+    text: "Skip"
+    optional: true
+
+# Otherwise swipe through and try to finish
 - swipe:
     direction: LEFT
     duration: 500
@@ -20,7 +27,13 @@ onFlowStart:
     direction: LEFT
     duration: 500
 
-# Tap Get Started button
+- swipe:
+    direction: LEFT
+    duration: 500
+
+- waitForAnimationToEnd
+
+# Tap Get Started / Finish buttons (support VN/EN)
 - tapOn:
     text: "Bắt đầu"
     optional: true
@@ -29,7 +42,22 @@ onFlowStart:
     text: "Get Started"
     optional: true
 
-# Should see login screen
-- assertVisible:
-    text: "Đăng nhập"
+- tapOn:
+    text: "Finish"
+    optional: true
+
+- tapOn:
+    text: "Next"
+    optional: true
+
+- tapOn:
+    text: "Tiếp"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Should see login screen (VN/EN)
+- extendedWaitUntil:
+    visible: '(?i)đăng nhập|log in|login|sign in|chào mừng trở lại|welcome back'
+    timeout: 10000
     optional: true

@@ -43,6 +43,6 @@ onFlowStart:
     optional: true
 
 # Scroll to see more results
-- scroll:
+- swipe:
     direction: DOWN
     duration: 500

@@ -33,7 +33,7 @@ onFlowStart:
     optional: true
 
 # Scroll to menu items
-- scroll:
+- swipe:
     direction: DOWN
     duration: 500
 
@@ -52,7 +52,7 @@ onFlowStart:
     optional: true
 
 # Scroll more
-- scroll:
+- swipe:
     direction: DOWN
     duration: 500
 

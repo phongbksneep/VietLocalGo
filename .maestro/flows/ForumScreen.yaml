@@ -41,7 +41,7 @@ onFlowStart:
     optional: true
 
 # Scroll through posts
-- scroll:
+- swipe:
     direction: DOWN
     duration: 500
 
