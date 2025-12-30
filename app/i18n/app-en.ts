@@ -162,6 +162,7 @@ const appEn = {
   // Home Screen
   home: {
     greeting: "Hello",
+    welcome: "Welcome",
     searchPlaceholder: "Search places, food...",
     currentLocation: "Current location",
     quickActions: {
@@ -172,12 +173,14 @@ const appEn = {
     },
     sections: {
       featuredTours: "Featured Tours",
+      featuredProvinces: "Featured Provinces",
       recommendedForYou: "Recommended For You",
       topFood: "Top Food",
       nearbyPlaces: "Nearby Places",
       hotPosts: "Hot Posts",
     },
     seeAll: "See all",
+    popularTours: "Popular Tours",
     bookNow: "Book Now",
     perPerson: "/person",
   },

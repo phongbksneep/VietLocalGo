@@ -162,6 +162,7 @@ const vi = {
   // Home Screen
   home: {
     greeting: "Xin chào",
+    welcome: "Xin chào",
     searchPlaceholder: "Tìm kiếm địa điểm, ẩm thực...",
     currentLocation: "Vị trí hiện tại",
     quickActions: {
@@ -172,12 +173,14 @@ const vi = {
     },
     sections: {
       featuredTours: "Tour nổi bật",
+      featuredProvinces: "Tỉnh nổi bật",
       recommendedForYou: "Đề xuất cho bạn",
       topFood: "Ẩm thực hàng đầu",
       nearbyPlaces: "Địa điểm gần bạn",
       hotPosts: "Bài viết nổi bật",
     },
     seeAll: "Xem tất cả",
+    popularTours: "Tour phổ biến",
     bookNow: "Đặt ngay",
     perPerson: "/người",
   },
