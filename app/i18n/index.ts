@@ -5,6 +5,7 @@ import { initReactI18next } from "react-i18next"
 import "intl-pluralrules"
 
 // if English isn't your default language, move Translations to the appropriate language file.
+import appEn from "./app-en"
 import ar from "./ar"
 import en, { Translations } from "./en"
 import es from "./es"
@@ -12,12 +13,23 @@ import fr from "./fr"
 import hi from "./hi"
 import ja from "./ja"
 import ko from "./ko"
+import vi from "./vi"
 
-const fallbackLocale = "en-US"
+const fallbackLocale = "vi" // Default to Vietnamese for VietLocalGo
 
 const systemLocales = Localization.getLocales()
 
-const resources = { ar, en, ko, es, fr, ja, hi }
+// Merge app translations with existing translations
+const resources = {
+  ar,
+  en: { translation: { ...en, ...appEn } },
+  ko,
+  es,
+  fr,
+  ja,
+  hi,
+  vi: { translation: vi },
+}
 const supportedTags = Object.keys(resources)
 
 // Checks to see if the device locale matches any of the supported locales

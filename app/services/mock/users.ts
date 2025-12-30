@@ -28,7 +28,7 @@ export interface User {
 
 export interface Booking {
   id: string
-  
+
   userId: string
   tourId: string
   tourName: string
@@ -219,18 +219,13 @@ export const getBookingById = (id: string): Booking | undefined => {
 export const getUpcomingBookings = (userId: string): Booking[] => {
   const now = new Date()
   return bookings.filter(
-    (b) =>
-      b.userId === userId &&
-      new Date(b.date) >= now &&
-      b.status !== "cancelled",
+    (b) => b.userId === userId && new Date(b.date) >= now && b.status !== "cancelled",
   )
 }
 
 export const getPastBookings = (userId: string): Booking[] => {
   const now = new Date()
-  return bookings.filter(
-    (b) => b.userId === userId && new Date(b.date) < now,
-  )
+  return bookings.filter((b) => b.userId === userId && new Date(b.date) < now)
 }
 
 export const getNotificationsByUser = (userId: string): Notification[] => {

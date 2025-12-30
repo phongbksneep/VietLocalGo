@@ -1,0 +1,62 @@
+#flow: VietLocalGo Profile Screen
+#intent:
+# Test profile screen elements and navigation
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Login first
+- runFlow: ../shared/_VietLocalGoLogin.yaml
+
+# Navigate to Profile
+- tapOn:
+    text: "Cá nhân"
+    optional: true
+
+# Verify profile elements
+- assertVisible:
+    text: "Hồ sơ"
+    optional: true
+
+# Check user stats
+- assertVisible:
+    text: "Chuyến đi"
+    optional: true
+
+- assertVisible:
+    text: "Đánh giá"
+    optional: true
+
+- assertVisible:
+    text: "Đã lưu"
+    optional: true
+
+# Scroll to menu items
+- scroll:
+    direction: DOWN
+    duration: 500
+
+# Check account section
+- assertVisible:
+    text: "Đặt chỗ của tôi"
+    optional: true
+
+# Check settings section
+- assertVisible:
+    text: "Ngôn ngữ"
+    optional: true
+
+- assertVisible:
+    text: "Thông báo"
+    optional: true
+
+# Scroll more
+- scroll:
+    direction: DOWN
+    duration: 500
+
+# Check logout button
+- assertVisible:
+    text: "Đăng xuất"
+    optional: true

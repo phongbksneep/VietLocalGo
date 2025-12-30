@@ -108,10 +108,7 @@ export const places: Place[] = [
       "Nem nắm là món ăn truyền thống của Nam Định, làm từ thịt lợn ướp gia vị đặc biệt, cuốn trong lá chuối, có vị chua nhẹ đặc trưng.",
     descriptionEn:
       "Fermented pork roll is a traditional dish of Nam Dinh, made from pork marinated with special spices, wrapped in banana leaves, with a characteristic light sour taste.",
-    images: [
-      "https://picsum.photos/seed/nem1/800/600",
-      "https://picsum.photos/seed/nem2/800/600",
-    ],
+    images: ["https://picsum.photos/seed/nem1/800/600", "https://picsum.photos/seed/nem2/800/600"],
     amenities: ["parking", "takeaway"],
     isOpen: true,
   },
@@ -270,11 +267,7 @@ export const getTopRatedPlaces = (limit = 10): Place[] => {
   return [...places].sort((a, b) => b.rating - a.rating).slice(0, limit)
 }
 
-export const getNearbyPlaces = (
-  lat: number,
-  lng: number,
-  radiusKm = 10,
-): Place[] => {
+export const getNearbyPlaces = (lat: number, lng: number, radiusKm = 10): Place[] => {
   return places.filter((p) => {
     const distance = calculateDistance(lat, lng, p.coordinates.lat, p.coordinates.lng)
     return distance <= radiusKm
@@ -282,12 +275,7 @@ export const getNearbyPlaces = (
 }
 
 // Haversine formula to calculate distance between two coordinates
-const calculateDistance = (
-  lat1: number,
-  lng1: number,
-  lat2: number,
-  lng2: number,
-): number => {
+const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
   const R = 6371 // Earth's radius in km
   const dLat = ((lat2 - lat1) * Math.PI) / 180
   const dLng = ((lng2 - lng1) * Math.PI) / 180

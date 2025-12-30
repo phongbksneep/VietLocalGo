@@ -40,7 +40,8 @@ export const guides: Guide[] = [
     languages: ["Tiếng Việt", "English"],
     hourlyRate: 300000,
     bio: "Xin chào! Tôi là Minh Đức, hướng dẫn viên du lịch chuyên nghiệp với 5 năm kinh nghiệm tại Nam Định. Tôi sinh ra và lớn lên tại đây, am hiểu sâu sắc về văn hóa, lịch sử và ẩm thực địa phương. Hãy để tôi đưa bạn khám phá những điều tuyệt vời nhất của quê hương tôi!",
-    bioEn: "Hello! I'm Minh Duc, a professional tour guide with 5 years of experience in Nam Dinh. Born and raised here, I have deep knowledge of local culture, history and cuisine. Let me take you to discover the best things about my hometown!",
+    bioEn:
+      "Hello! I'm Minh Duc, a professional tour guide with 5 years of experience in Nam Dinh. Born and raised here, I have deep knowledge of local culture, history and cuisine. Let me take you to discover the best things about my hometown!",
     isOnline: true,
     isVerified: true,
     responseTime: "Thường trả lời trong 30 phút",
@@ -62,7 +63,8 @@ export const guides: Guide[] = [
     languages: ["Tiếng Việt", "English", "中文"],
     hourlyRate: 250000,
     bio: "Chào bạn! Tôi là Thu Hương, một cô gái Nam Định yêu quê hương và muốn chia sẻ vẻ đẹp của nơi đây với mọi người. Tôi chuyên dẫn tour làng nghề truyền thống và ẩm thực địa phương. Đặc biệt, tôi có thể giao tiếp bằng tiếng Trung nên rất thuận tiện cho du khách Trung Quốc.",
-    bioEn: "Hi! I'm Thu Huong, a Nam Dinh girl who loves my hometown and wants to share its beauty with everyone. I specialize in traditional craft village and local food tours. Especially, I can communicate in Chinese which is convenient for Chinese tourists.",
+    bioEn:
+      "Hi! I'm Thu Huong, a Nam Dinh girl who loves my hometown and wants to share its beauty with everyone. I specialize in traditional craft village and local food tours. Especially, I can communicate in Chinese which is convenient for Chinese tourists.",
     isOnline: true,
     isVerified: true,
     responseTime: "Thường trả lời trong 1 giờ",
@@ -84,7 +86,8 @@ export const guides: Guide[] = [
     languages: ["Tiếng Việt"],
     hourlyRate: 200000,
     bio: "Xin chào các bạn! Tôi là Văn Long, chuyên hướng dẫn các tour biển và thiên nhiên tại Nam Định. Với kinh nghiệm 2 năm làm hướng dẫn viên và am hiểu vùng biển Quất Lâm, tôi sẽ giúp bạn có những trải nghiệm tuyệt vời nhất.",
-    bioEn: "Hello everyone! I'm Van Long, specializing in beach and nature tours in Nam Dinh. With 2 years of guide experience and deep knowledge of Quat Lam coastal area, I will help you have the best experiences.",
+    bioEn:
+      "Hello everyone! I'm Van Long, specializing in beach and nature tours in Nam Dinh. With 2 years of guide experience and deep knowledge of Quat Lam coastal area, I will help you have the best experiences.",
     isOnline: false,
     isVerified: true,
     responseTime: "Thường trả lời trong 2 giờ",
@@ -106,7 +109,8 @@ export const guides: Guide[] = [
     languages: ["Tiếng Việt", "English"],
     hourlyRate: 280000,
     bio: "Chào mừng đến với Nam Định! Tôi là Hồng Nhung, hướng dẫn viên chuyên về các tour tâm linh và lễ hội. Tôi có kiến thức sâu rộng về tín ngưỡng thờ Mẫu, lễ hội Phủ Dầy và các di tích tâm linh tại Nam Định.",
-    bioEn: "Welcome to Nam Dinh! I'm Hong Nhung, a guide specializing in spiritual and festival tours. I have extensive knowledge of Mother Goddess worship, Phu Day festival and spiritual sites in Nam Dinh.",
+    bioEn:
+      "Welcome to Nam Dinh! I'm Hong Nhung, a guide specializing in spiritual and festival tours. I have extensive knowledge of Mother Goddess worship, Phu Day festival and spiritual sites in Nam Dinh.",
     isOnline: true,
     isVerified: true,
     responseTime: "Thường trả lời trong 45 phút",
@@ -131,9 +135,7 @@ export const getOnlineGuides = (): Guide[] => {
 
 export const getGuidesBySpecialty = (specialty: string): Guide[] => {
   return guides.filter(
-    (g) =>
-      g.specialties.includes(specialty) ||
-      g.specialtiesEn.includes(specialty),
+    (g) => g.specialties.includes(specialty) || g.specialtiesEn.includes(specialty),
   )
 }
 

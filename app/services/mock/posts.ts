@@ -72,7 +72,8 @@ export const posts: Post[] = [
         userId: "user-1",
         userName: "Nguyễn Văn An",
         userAvatar: "https://i.pravatar.cc/150?u=user1",
-        content: "@Trần Thị Bình Mình đi tour của anh Minh Đức trên VietLocalGo đó bạn, rất nhiệt tình!",
+        content:
+          "@Trần Thị Bình Mình đi tour của anh Minh Đức trên VietLocalGo đó bạn, rất nhiệt tình!",
         likeCount: 3,
         createdAt: "2025-01-15T10:15:00Z",
       },
@@ -223,7 +224,5 @@ export const searchPosts = (query: string): Post[] => {
 }
 
 export const getPostsByTag = (tag: string): Post[] => {
-  return posts.filter((p) =>
-    p.tags.some((t) => t.toLowerCase() === tag.toLowerCase()),
-  )
+  return posts.filter((p) => p.tags.some((t) => t.toLowerCase() === tag.toLowerCase()))
 }

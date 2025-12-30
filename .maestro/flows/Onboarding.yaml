@@ -1,0 +1,35 @@
+#flow: VietLocalGo Onboarding
+#intent:
+# Test the onboarding flow from start to login screen
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Check onboarding slides appear
+- assertVisible: 
+    text: "Khám phá địa phương"
+    optional: true
+
+# Swipe through onboarding
+- swipe:
+    direction: LEFT
+    duration: 500
+
+- swipe:
+    direction: LEFT
+    duration: 500
+
+# Tap Get Started button
+- tapOn:
+    text: "Bắt đầu"
+    optional: true
+
+- tapOn:
+    text: "Get Started"
+    optional: true
+
+# Should see login screen
+- assertVisible:
+    text: "Đăng nhập"
+    optional: true

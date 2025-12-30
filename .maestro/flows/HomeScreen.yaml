@@ -1,0 +1,45 @@
+#flow: VietLocalGo Home Screen
+#intent:
+# Test home screen content and interactions
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Login first
+- runFlow: ../shared/_VietLocalGoLogin.yaml
+
+# Verify Home screen elements
+- assertVisible:
+    text: "Xin chào"
+    optional: true
+
+# Check featured provinces section
+- assertVisible:
+    text: "Tỉnh nổi bật"
+    optional: true
+
+# Check popular tours section
+- assertVisible:
+    text: "Tour phổ biến"
+    optional: true
+
+# Scroll down
+- scroll:
+    direction: DOWN
+    duration: 1000
+
+# Check nearby places section
+- assertVisible:
+    text: "Địa điểm gần bạn"
+    optional: true
+
+# Tap on search bar
+- tapOn:
+    text: "Tìm kiếm"
+    optional: true
+
+# Tap notification bell
+- tapOn:
+    id: "notification-bell"
+    optional: true

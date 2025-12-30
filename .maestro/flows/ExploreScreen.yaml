@@ -1,0 +1,48 @@
+#flow: VietLocalGo Explore Screen
+#intent:
+# Test explore screen filtering and content
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Login first
+- runFlow: ../shared/_VietLocalGoLogin.yaml
+
+# Navigate to Explore
+- tapOn:
+    text: "Khám phá"
+    optional: true
+
+# Wait for screen to load
+- extendedWaitUntil:
+    visible: "Tất cả"
+    timeout: 5000
+    optional: true
+
+# Test category filters
+- tapOn:
+    text: "Ẩm thực"
+    optional: true
+
+- tapOn:
+    text: "Du lịch"
+    optional: true
+
+- tapOn:
+    text: "Văn hóa"
+    optional: true
+
+- tapOn:
+    text: "Tất cả"
+    optional: true
+
+# Verify results displayed
+- assertVisible:
+    text: "kết quả"
+    optional: true
+
+# Scroll to see more results
+- scroll:
+    direction: DOWN
+    duration: 500

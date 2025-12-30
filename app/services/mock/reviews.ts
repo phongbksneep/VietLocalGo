@@ -74,9 +74,7 @@ export const reviews: Review[] = [
     rating: 4,
     content:
       "Amazing pho! The flavor is incredible. A bit crowded during peak hours but worth the wait. The staff doesn't speak much English but they are very friendly and helpful.",
-    images: [
-      "https://picsum.photos/seed/review3a/400/300",
-    ],
+    images: ["https://picsum.photos/seed/review3a/400/300"],
     tags: ["Delicious", "Authentic", "Crowded"],
     helpfulCount: 18,
     replyCount: 2,
@@ -175,9 +173,7 @@ export const reviews: Review[] = [
     rating: 5,
     content:
       "Thu Huong is an amazing guide! Her English is excellent and she knows so much about local culture and food. The food tour she led was the highlight of my trip to Vietnam. She even helped me buy some special local products to bring home.",
-    images: [
-      "https://picsum.photos/seed/review8a/400/300",
-    ],
+    images: ["https://picsum.photos/seed/review8a/400/300"],
     tags: ["Excellent English", "Knowledgeable", "Friendly"],
     helpfulCount: 42,
     replyCount: 3,
@@ -191,9 +187,7 @@ export const getReviewsByTarget = (
   targetId: string,
   targetType: Review["targetType"],
 ): Review[] => {
-  return reviews.filter(
-    (r) => r.targetId === targetId && r.targetType === targetType,
-  )
+  return reviews.filter((r) => r.targetId === targetId && r.targetType === targetType)
 }
 
 export const getReviewById = (id: string): Review | undefined => {

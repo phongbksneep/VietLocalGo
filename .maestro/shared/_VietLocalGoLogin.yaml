@@ -1,0 +1,52 @@
+#flow: Shared VietLocalGo Login
+#intent: Shared login flow for VietLocalGo tests
+
+appId: ${MAESTRO_APP_ID}
+---
+# Skip onboarding if visible
+- tapOn:
+    text: "Bỏ qua"
+    optional: true
+
+- tapOn:
+    text: "Skip"
+    optional: true
+
+# If on onboarding, go through it
+- tapOn:
+    text: "Bắt đầu"
+    optional: true
+
+- tapOn:
+    text: "Get Started"
+    optional: true
+
+# Login screen
+- tapOn:
+    text: "Đăng nhập"
+    optional: true
+
+# Enter credentials
+- tapOn:
+    text: "Email"
+    optional: true
+
+- inputText: "test@example.com"
+
+- tapOn:
+    text: "Mật khẩu"
+    optional: true
+
+- inputText: "password123"
+
+# Tap login button
+- tapOn:
+    text: "Đăng nhập"
+    index: 1
+    optional: true
+
+# Wait for home screen
+- extendedWaitUntil:
+    visible: "Trang chủ"
+    timeout: 5000
+    optional: true

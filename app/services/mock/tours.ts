@@ -81,16 +81,8 @@ export const tours: Tour[] = [
       "Drinking water",
       "Travel insurance",
     ],
-    excludes: [
-      "Chi phí cá nhân",
-      "Tip cho hướng dẫn viên",
-      "Đồ lễ (nếu cần)",
-    ],
-    excludesEn: [
-      "Personal expenses",
-      "Tips for guide",
-      "Offerings (if needed)",
-    ],
+    excludes: ["Chi phí cá nhân", "Tip cho hướng dẫn viên", "Đồ lễ (nếu cần)"],
+    excludesEn: ["Personal expenses", "Tips for guide", "Offerings (if needed)"],
     itinerary: [
       {
         time: "7:00",
@@ -190,16 +182,8 @@ export const tours: Tour[] = [
       "Unlimited drinks",
       "Travel insurance",
     ],
-    excludes: [
-      "Di chuyển cá nhân",
-      "Tip cho hướng dẫn viên",
-      "Mua đồ về làm quà",
-    ],
-    excludesEn: [
-      "Personal transportation",
-      "Tips for guide",
-      "Purchasing souvenirs",
-    ],
+    excludes: ["Di chuyển cá nhân", "Tip cho hướng dẫn viên", "Mua đồ về làm quà"],
+    excludesEn: ["Personal transportation", "Tips for guide", "Purchasing souvenirs"],
     itinerary: [
       {
         time: "7:00",
@@ -283,16 +267,8 @@ export const tours: Tour[] = [
       "Tour guide",
       "Travel insurance",
     ],
-    excludes: [
-      "Chi phí cá nhân",
-      "Thuê phao bơi, dù che",
-      "Đồ uống ngoài bữa ăn",
-    ],
-    excludesEn: [
-      "Personal expenses",
-      "Swimming float, umbrella rental",
-      "Drinks outside meals",
-    ],
+    excludes: ["Chi phí cá nhân", "Thuê phao bơi, dù che", "Đồ uống ngoài bữa ăn"],
+    excludesEn: ["Personal expenses", "Swimming float, umbrella rental", "Drinks outside meals"],
     itinerary: [
       {
         time: "Ngày 1 - 7:00",
@@ -336,13 +312,7 @@ export const tours: Tour[] = [
       },
     ],
     guideId: "guide-van-long",
-    availableDates: [
-      "2025-01-18",
-      "2025-01-25",
-      "2025-02-01",
-      "2025-02-08",
-      "2025-02-15",
-    ],
+    availableDates: ["2025-01-18", "2025-01-25", "2025-02-01", "2025-02-08", "2025-02-15"],
     categories: ["beach", "relaxation"],
     difficulty: "easy",
     discount: 17,
@@ -367,26 +337,10 @@ export const tours: Tour[] = [
     price: 250000,
     rating: 4.7,
     reviewCount: 312,
-    includes: [
-      "Hướng dẫn viên địa phương",
-      "Bữa nhẹ",
-      "Hoa tặng (1 chậu nhỏ)",
-      "Bảo hiểm du lịch",
-    ],
-    includesEn: [
-      "Local guide",
-      "Light meal",
-      "Flower gift (1 small pot)",
-      "Travel insurance",
-    ],
-    excludes: [
-      "Di chuyển cá nhân",
-      "Mua hoa thêm",
-    ],
-    excludesEn: [
-      "Personal transportation",
-      "Additional flower purchases",
-    ],
+    includes: ["Hướng dẫn viên địa phương", "Bữa nhẹ", "Hoa tặng (1 chậu nhỏ)", "Bảo hiểm du lịch"],
+    includesEn: ["Local guide", "Light meal", "Flower gift (1 small pot)", "Travel insurance"],
+    excludes: ["Di chuyển cá nhân", "Mua hoa thêm"],
+    excludesEn: ["Personal transportation", "Additional flower purchases"],
     itinerary: [
       {
         time: "8:00",

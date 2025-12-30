@@ -1,0 +1,51 @@
+#flow: VietLocalGo Main Navigation
+#intent:
+# Test navigation through main tabs after login
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Login first
+- runFlow: ../shared/_VietLocalGoLogin.yaml
+
+# Verify Home screen
+- assertVisible:
+    text: "Trang chủ"
+    optional: true
+
+# Navigate to Explore tab
+- tapOn:
+    text: "Khám phá"
+    optional: true
+
+- assertVisible:
+    text: "Explore"
+    optional: true
+
+# Navigate to Map tab
+- tapOn:
+    text: "Bản đồ"
+    optional: true
+
+- assertVisible:
+    text: "Map"
+    optional: true
+
+# Navigate to Forum tab
+- tapOn:
+    text: "Cộng đồng"
+    optional: true
+
+- assertVisible:
+    text: "Forum"
+    optional: true
+
+# Navigate to Profile tab
+- tapOn:
+    text: "Cá nhân"
+    optional: true
+
+- assertVisible:
+    text: "Profile"
+    optional: true

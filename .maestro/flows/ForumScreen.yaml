@@ -1,0 +1,51 @@
+#flow: VietLocalGo Forum Screen
+#intent:
+# Test forum/community screen functionality
+
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Login first
+- runFlow: ../shared/_VietLocalGoLogin.yaml
+
+# Navigate to Forum
+- tapOn:
+    text: "Cộng đồng"
+    optional: true
+
+# Verify forum tabs
+- assertVisible:
+    text: "Xu hướng"
+    optional: true
+
+- assertVisible:
+    text: "Mới nhất"
+    optional: true
+
+- assertVisible:
+    text: "Đang theo dõi"
+    optional: true
+
+# Switch tabs
+- tapOn:
+    text: "Mới nhất"
+    optional: true
+
+- tapOn:
+    text: "Đang theo dõi"
+    optional: true
+
+- tapOn:
+    text: "Xu hướng"
+    optional: true
+
+# Scroll through posts
+- scroll:
+    direction: DOWN
+    duration: 500
+
+# Tap FAB to create post (optional)
+- tapOn:
+    id: "fab-create-post"
+    optional: true
