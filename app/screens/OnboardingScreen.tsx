@@ -13,9 +13,12 @@ import {
   View,
   ViewStyle,
 } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { useTranslation } from "react-i18next"
 
 import { Text } from "@/components/Text"
+import type { AppStackParamList } from "@/navigators/navigationTypes"
 import { useAppTheme } from "@/theme/context"
 import type { ThemedStyle } from "@/theme/types"
 
@@ -37,6 +40,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
   const { themed } = useAppTheme()
   const flatListRef = useRef<FlatList>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList, "Onboarding">>()
 
   const slides: OnboardingItem[] = [
     {
@@ -63,12 +67,15 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
     if (currentIndex < slides.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 })
     } else {
+      // Prefer navigation to Login so user can sign in after onboarding
       onComplete?.()
+      navigation.replace("Login")
     }
   }
 
   const handleSkip = () => {
     onComplete?.()
+    navigation.replace("Login")
   }
 
   const renderSlide = ({ item }: { item: OnboardingItem }) => (
