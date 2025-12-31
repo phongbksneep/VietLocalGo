@@ -29,25 +29,34 @@ export function ProfileScreen() {
     {
       title: t("profile.account"),
       items: [
-        { id: "bookings", icon: "components", label: t("profile.myBookings") },
-        { id: "favorites", icon: "heart", label: t("profile.favorites") },
-        { id: "reviews", icon: "community", label: t("profile.myReviews") },
+        {
+          id: "bookings",
+          icon: "components",
+          label: t("profile.menu.bookingHistory"),
+        },
+        { id: "favorites", icon: "heart", label: t("profile.menu.savedPlaces") },
+        { id: "reviews", icon: "community", label: t("profile.menu.myReviews") },
       ],
     },
     {
       title: t("profile.settings"),
       items: [
-        { id: "language", icon: "components", label: t("profile.language"), value: "Tiếng Việt" },
-        { id: "notifications", icon: "bell", label: t("profile.notifications") },
-        { id: "privacy", icon: "lock", label: t("profile.privacy") },
+        {
+          id: "language",
+          icon: "components",
+          label: t("profile.menu.language"),
+          value: "Tiếng Việt",
+        },
+        { id: "notifications", icon: "bell", label: t("profile.menu.notifications") },
+        { id: "privacy", icon: "lock", label: t("profile.menu.privacy") },
       ],
     },
     {
       title: t("profile.support"),
       items: [
-        { id: "help", icon: "community", label: t("profile.helpCenter") },
-        { id: "feedback", icon: "components", label: t("profile.feedback") },
-        { id: "about", icon: "components", label: t("profile.about") },
+        { id: "help", icon: "community", label: t("profile.menu.helpSupport") },
+        { id: "feedback", icon: "components", label: t("profile.menu.feedback") },
+        { id: "about", icon: "components", label: t("profile.menu.about") },
       ],
     },
   ]
@@ -83,7 +92,7 @@ export function ProfileScreen() {
           <Text style={themed($userEmail)}>{user.email}</Text>
         </View>
         <Pressable style={themed($editButton)}>
-          <Text style={themed($editText)}>{t("profile.edit")}</Text>
+          <Text style={themed($editText)}>{t("profile.editProfile")}</Text>
         </Pressable>
       </View>
 
@@ -91,17 +100,17 @@ export function ProfileScreen() {
       <View style={themed($statsContainer)}>
         <View style={$statItem}>
           <Text style={themed($statValue)}>12</Text>
-          <Text style={themed($statLabel)}>{t("profile.trips")}</Text>
+          <Text style={themed($statLabel)}>{t("profile.stats.tours")}</Text>
         </View>
         <View style={themed($statDivider)} />
         <View style={$statItem}>
           <Text style={themed($statValue)}>28</Text>
-          <Text style={themed($statLabel)}>{t("profile.reviewsGiven")}</Text>
+          <Text style={themed($statLabel)}>{t("profile.stats.reviews")}</Text>
         </View>
         <View style={themed($statDivider)} />
         <View style={$statItem}>
           <Text style={themed($statValue)}>45</Text>
-          <Text style={themed($statLabel)}>{t("profile.saved")}</Text>
+          <Text style={themed($statLabel)}>{t("profile.stats.saved")}</Text>
         </View>
       </View>
 

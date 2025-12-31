@@ -212,6 +212,7 @@ const appEn = {
       distance: "Nearest",
       newest: "Newest",
     },
+    sortByLabel: "Sort by",
     results: "{{count}} results",
     noResults: "No places found",
   },
@@ -220,6 +221,12 @@ const appEn = {
   map: {
     title: "Map",
     searchPlaceholder: "Search places...",
+    searchPlace: "Search...",
+    mapPlaceholder: "Map placeholder",
+    integrationNote: "Map integration is not configured in this demo",
+    all: "All",
+    food: "Food",
+    tourism: "Tourism",
     filters: {
       food: "Food",
       heritage: "Heritage",
@@ -232,6 +239,8 @@ const appEn = {
     myLocation: "My location",
     zoomIn: "Zoom in",
     zoomOut: "Zoom out",
+    nearMe: "Near me",
+    saved: "Saved",
   },
 
   // Forum Screen
@@ -269,6 +278,7 @@ const appEn = {
       title: "No posts yet",
       subtitle: "Be the first to share your experience!",
     },
+    share: "Share",
   },
 
   // Profile Screen
@@ -286,6 +296,9 @@ const appEn = {
       savedPlaces: "Saved",
       myReviews: "My Reviews",
       notifications: "Notifications",
+      privacy: "Privacy",
+      feedback: "Feedback",
+      about: "About",
       language: "Language",
       helpSupport: "Help & Support",
       settings: "Settings",
@@ -295,6 +308,9 @@ const appEn = {
       vietnamese: "Tiếng Việt",
       english: "English",
     },
+    account: "Account",
+    settings: "Settings",
+    support: "Support",
   },
 
   // Tour Screens

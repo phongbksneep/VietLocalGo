@@ -212,6 +212,7 @@ const vi = {
       distance: "Gần nhất",
       newest: "Mới nhất",
     },
+    sortByLabel: "Sắp xếp theo",
     results: "{{count}} kết quả",
     noResults: "Không tìm thấy địa điểm nào",
   },
@@ -220,6 +221,12 @@ const vi = {
   map: {
     title: "Bản đồ",
     searchPlaceholder: "Tìm kiếm địa điểm...",
+    searchPlace: "Tìm kiếm...",
+    mapPlaceholder: "Chưa tích hợp bản đồ",
+    integrationNote: "Tính năng bản đồ chưa được cấu hình trong demo này",
+    all: "Tất cả",
+    food: "Ẩm thực",
+    tourism: "Du lịch",
     filters: {
       food: "Ẩm thực",
       heritage: "Di tích",
@@ -232,6 +239,8 @@ const vi = {
     myLocation: "Vị trí của tôi",
     zoomIn: "Phóng to",
     zoomOut: "Thu nhỏ",
+    nearMe: "Gần tôi",
+    saved: "Đã lưu",
   },
 
   // Forum Screen
@@ -286,6 +295,9 @@ const vi = {
       savedPlaces: "Đã lưu",
       myReviews: "Đánh giá của tôi",
       notifications: "Thông báo",
+      privacy: "Quyền riêng tư",
+      feedback: "Phản hồi",
+      about: "Về ứng dụng",
       language: "Ngôn ngữ",
       helpSupport: "Trợ giúp & Hỗ trợ",
       settings: "Cài đặt",

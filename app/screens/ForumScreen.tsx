@@ -22,9 +22,9 @@ export function ForumScreen() {
   const [activeTab, setActiveTab] = useState<Tab>("trending")
 
   const tabs: { id: Tab; label: string }[] = [
-    { id: "trending", label: t("forum.trending") },
-    { id: "recent", label: t("forum.recent") },
-    { id: "following", label: t("forum.following") },
+    { id: "trending", label: t("forum.tabs.hot") },
+    { id: "recent", label: t("forum.tabs.newest") },
+    { id: "following", label: t("forum.tabs.following") },
   ]
 
   const renderPost = useCallback(

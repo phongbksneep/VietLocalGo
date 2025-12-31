@@ -29,11 +29,11 @@ export function ExploreScreen() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("all")
 
   const categories: CategoryItem[] = [
-    { id: "all", label: t("explore.all"), icon: "components" },
-    { id: "food", label: t("explore.food"), icon: "heart" },
-    { id: "tourism", label: t("explore.tourism"), icon: "pin" },
-    { id: "culture", label: t("explore.culture"), icon: "community" },
-    { id: "nature", label: t("explore.nature"), icon: "components" },
+    { id: "all", label: t("explore.categories.all"), icon: "components" },
+    { id: "food", label: t("explore.categories.food"), icon: "heart" },
+    { id: "tourism", label: t("explore.categories.temple"), icon: "pin" },
+    { id: "culture", label: t("explore.categories.heritage"), icon: "community" },
+    { id: "nature", label: t("explore.categories.nature"), icon: "components" },
   ]
 
   const filteredPlaces =
@@ -105,10 +105,10 @@ export function ExploreScreen() {
       {/* Results Header */}
       <View style={$resultsHeader}>
         <Text style={themed($resultsCount)}>
-          {filteredPlaces.length} {t("explore.results")}
+          {t("explore.results", { count: filteredPlaces.length })}
         </Text>
         <Pressable style={$sortButton}>
-          <Text style={themed($sortText)}>{t("explore.sortBy")}</Text>
+          <Text style={themed($sortText)}>{t("explore.sortByLabel")}</Text>
           <Icon icon="caretRight" size={14} color={theme.colors.textDim} />
         </Pressable>
       </View>

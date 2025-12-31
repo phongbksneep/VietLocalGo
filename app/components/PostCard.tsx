@@ -119,7 +119,7 @@ export const PostCard = memo(function PostCard(props: PostCardProps) {
 
         <Pressable style={$actionButton} onPress={onShare}>
           <Icon icon="components" size={20} color={theme.colors.textDim} />
-          <Text style={themed($actionText)}>{t("forum.share")}</Text>
+          <Text style={themed($actionText)}>{t("forum.post.share")}</Text>
         </Pressable>
       </View>
     </Pressable>
