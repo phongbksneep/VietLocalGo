@@ -17,6 +17,7 @@ import { useNavigation } from "@react-navigation/native"
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { useTranslation } from "react-i18next"
 
+import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
 import type { AppStackParamList } from "@/navigators/navigationTypes"
 import { useAppTheme } from "@/theme/context"
@@ -98,7 +99,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
   )
 
   return (
-    <View style={themed($container)}>
+    <Screen preset="fixed" contentContainerStyle={themed($container)} safeAreaEdges={["top"]}>
       <Pressable style={$skipButton} onPress={handleSkip}>
         <Text style={themed($skipText)}>{t("onboarding.skip")}</Text>
       </Pressable>
@@ -124,7 +125,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           {currentIndex === slides.length - 1 ? t("onboarding.getStarted") : t("onboarding.next")}
         </Text>
       </Pressable>
-    </View>
+    </Screen>
   )
 }
 

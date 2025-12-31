@@ -3,7 +3,7 @@
  * Max 200 lines per rule
  */
 import { useEffect } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, TextStyle, ViewStyle } from "react-native"
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -13,6 +13,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated"
 
+import { Screen } from "@/components/Screen"
 import { useAppTheme } from "@/theme/context"
 import type { ThemedStyle } from "@/theme/types"
 
@@ -56,7 +57,7 @@ export function SplashScreen({ onFinish }: SplashScreenProps) {
   }))
 
   return (
-    <View style={themed($container)}>
+    <Screen preset="fixed" contentContainerStyle={themed($container)}>
       <Animated.View style={[$logoContainer, logoAnimatedStyle]}>
         <Image source={require("@assets/images/logo.png")} style={$logo} resizeMode="contain" />
       </Animated.View>
@@ -65,7 +66,7 @@ export function SplashScreen({ onFinish }: SplashScreenProps) {
         <Animated.Text style={themed($title)}>VietLocalGo</Animated.Text>
         <Animated.Text style={themed($subtitle)}>Khám phá Việt Nam</Animated.Text>
       </Animated.View>
-    </View>
+    </Screen>
   )
 }
 

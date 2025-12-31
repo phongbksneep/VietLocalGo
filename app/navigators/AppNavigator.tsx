@@ -16,7 +16,7 @@ import { RegisterScreen } from "@/screens/RegisterScreen"
 import { WelcomeScreen } from "@/screens/WelcomeScreen"
 import { useAppTheme } from "@/theme/context"
 
-import { DemoNavigator } from "./DemoNavigator"
+// Demo navigator removed - deleted unused demo screens
 import { MainNavigator } from "./MainNavigator"
 import type { AppStackParamList, NavigationProps } from "./navigationTypes"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
@@ -52,7 +52,7 @@ const AppStack = () => {
         <>
           <Stack.Screen name="Main" component={MainNavigator} />
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Demo" component={DemoNavigator} />
+          {/* Demo screens removed */}
         </>
       ) : (
         <>

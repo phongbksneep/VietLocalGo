@@ -1,10 +1,2 @@
-export * from "./DemoIcon"
-export * from "./DemoTextField"
-export * from "./DemoToggle"
-export * from "./DemoButton"
-export * from "./DemoListItem"
-export * from "./DemoCard"
-export * from "./DemoAutoImage"
-export * from "./DemoText"
-export * from "./DemoHeader"
-export * from "./DemoEmptyState"
+// Demo exports removed - demo components are no longer included in the app
+export {}
