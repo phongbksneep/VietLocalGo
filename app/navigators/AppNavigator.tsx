@@ -14,6 +14,32 @@ import { LoginScreen } from "@/screens/LoginScreen"
 import { OnboardingScreen } from "@/screens/OnboardingScreen"
 import { RegisterScreen } from "@/screens/RegisterScreen"
 import { WelcomeScreen } from "@/screens/WelcomeScreen"
+// Auth screens
+import { ForgotPasswordScreen } from "@/screens/ForgotPasswordScreen"
+import { OTPVerificationScreen } from "@/screens/OTPVerificationScreen"
+// Detail screens
+import { PlaceDetailsScreen } from "@/screens/PlaceDetailsScreen"
+import { TourDetailsScreen } from "@/screens/TourDetailsScreen"
+import { GuideProfileScreen } from "@/screens/GuideProfileScreen"
+import { ProvinceDetailsScreen } from "@/screens/ProvinceDetailsScreen"
+import { PostDetailsScreen } from "@/screens/PostDetailsScreen"
+// Action screens
+import { SearchScreen } from "@/screens/SearchScreen"
+import { BookingScreen } from "@/screens/BookingScreen"
+import { ChatScreen } from "@/screens/ChatScreen"
+import { CreatePostScreen } from "@/screens/CreatePostScreen"
+import { SubmitReviewScreen } from "@/screens/SubmitReviewScreen"
+// AI Features
+import { QuestionnaireScreen } from "@/screens/QuestionnaireScreen"
+import { RecommendationsScreen } from "@/screens/RecommendationsScreen"
+// Profile sections
+import { EditProfileScreen } from "@/screens/EditProfileScreen"
+import { SettingsScreen } from "@/screens/SettingsScreen"
+import { NotificationsScreen } from "@/screens/NotificationsScreen"
+import { BookingHistoryScreen } from "@/screens/BookingHistoryScreen"
+import { SavedPlacesScreen } from "@/screens/SavedPlacesScreen"
+import { MyReviewsScreen } from "@/screens/MyReviewsScreen"
+import { GuideListScreen } from "@/screens/GuideListScreen"
 import { useAppTheme } from "@/theme/context"
 
 // Demo navigator removed - deleted unused demo screens
@@ -52,17 +78,39 @@ const AppStack = () => {
         <>
           <Stack.Screen name="Main" component={MainNavigator} />
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          {/* Demo screens removed */}
         </>
       ) : (
         <>
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+          <Stack.Screen name="OTPVerification" component={OTPVerificationScreen} />
         </>
       )}
 
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      {/* Common screens accessible from both auth states */}
+      <Stack.Group>
+        <Stack.Screen name="PlaceDetails" component={PlaceDetailsScreen} />
+        <Stack.Screen name="TourDetails" component={TourDetailsScreen} />
+        <Stack.Screen name="GuideProfile" component={GuideProfileScreen} />
+        <Stack.Screen name="ProvinceDetails" component={ProvinceDetailsScreen} />
+        <Stack.Screen name="PostDetails" component={PostDetailsScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Booking" component={BookingScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+        <Stack.Screen name="SubmitReview" component={SubmitReviewScreen} />
+        <Stack.Screen name="Questionnaire" component={QuestionnaireScreen} />
+        <Stack.Screen name="Recommendations" component={RecommendationsScreen} />
+        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Notifications" component={NotificationsScreen} />
+        <Stack.Screen name="BookingHistory" component={BookingHistoryScreen} />
+        <Stack.Screen name="SavedPlaces" component={SavedPlacesScreen} />
+        <Stack.Screen name="MyReviews" component={MyReviewsScreen} />
+        <Stack.Screen name="GuideList" component={GuideListScreen} />
+      </Stack.Group>
     </Stack.Navigator>
   )
 }

@@ -40,6 +40,24 @@ jest.mock("expo-localization", () => ({
   getLocales: () => [{ languageTag: "en-US", textDirection: "ltr" }],
 }))
 
+jest.mock("react-native-keyboard-controller", () => ({
+  KeyboardAwareScrollView: ({ children }: { children: React.ReactNode }) => children,
+  useKeyboardHandler: jest.fn(),
+  KeyboardController: {
+    setInputMode: jest.fn(),
+  },
+}))
+
+jest.mock("react-native-edge-to-edge", () => ({
+  SystemBars: () => null,
+}))
+
+// Mock Icon component
+jest.mock("../app/components/Icon", () => ({
+  Icon: ({ icon }: { icon: string }) => `Icon:${icon}`,
+  iconRegistry: {},
+}))
+
 jest.mock("../app/i18n/index.ts", () => ({
   i18n: {
     isInitialized: true,
