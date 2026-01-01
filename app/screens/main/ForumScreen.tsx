@@ -42,12 +42,16 @@ export function ForumScreen() {
         commentCount={item.commentCount}
         isLiked={item.isLiked}
         style={$postCard}
-        onPress={() => (navigation as any).navigate("PostDetails", { postId: item.id })}
+        onPress={() =>
+          (navigation as any).navigate("PostDetails", { postId: item.id, source: "forum" })
+        }
         onShare={() => {
           const message = `${item.userName}: ${item.content}`
           Share.share({ message })
         }}
-        onMore={() => (navigation as any).navigate("PostDetails", { postId: item.id })}
+        onMore={() =>
+          (navigation as any).navigate("PostDetails", { postId: item.id, source: "forum" })
+        }
       />
     ),
     [navigation],
@@ -60,7 +64,7 @@ export function ForumScreen() {
         <Text style={themed($title)}>{t("forum.title")}</Text>
         <Pressable
           style={themed($searchButton)}
-          onPress={() => navigation.navigate("Search" as never)}
+          onPress={() => (navigation as any).navigate("Search", { source: "forum-search" })}
           accessibilityLabel="forum-search-button"
         >
           <Icon icon="components" size={20} color={theme.colors.text} />

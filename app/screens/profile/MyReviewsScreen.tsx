@@ -129,10 +129,10 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
   const handleReviewPress = (review: MyReview) => {
     switch (review.targetType) {
       case "place":
-        navigation.navigate("PlaceDetails", { placeId: review.targetId })
+        navigation.navigate("PlaceDetails", { placeId: review.targetId, source: "my-reviews" })
         break
       case "tour":
-        navigation.navigate("TourDetails", { tourId: review.targetId })
+        navigation.navigate("TourDetails", { tourId: review.targetId, source: "my-reviews" })
         break
       case "guide":
         navigation.navigate("GuideProfile", { guideId: review.targetId })

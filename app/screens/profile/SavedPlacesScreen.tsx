@@ -45,7 +45,7 @@ export const SavedPlacesScreen: FC<SavedPlacesScreenProps> = ({ navigation }) =>
   }
 
   const handlePlacePress = (place: Place) => {
-    navigation.navigate("PlaceDetails", { placeId: place.id })
+    navigation.navigate("PlaceDetails", { placeId: place.id, source: "saved-places" })
   }
 
   const renderPlaceCard = ({ item }: { item: Place }) => (

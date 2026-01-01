@@ -33,6 +33,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [commentText, setCommentText] = useState("")
+  const [commentLiked, setCommentLiked] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const fetchPost = () => {
@@ -56,6 +57,19 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
     if (!commentText.trim()) return
     // Mock adding comment
     setCommentText("")
+  }
+
+  const handleCommentLike = (commentId: string) => {
+    setCommentLiked((prev) => ({ ...prev, [commentId]: !prev[commentId] }))
+  }
+
+  const handleReply = (userName: string) => {
+    setCommentText(`@${userName} `)
+    scrollRef.current?.scrollToEnd({ animated: true })
+  }
+
+  const handleSharePost = () => {
+    Share.share({ message: `${post?.userName}: ${post?.content}` })
   }
 
   const formatDate = (dateString: string) => {
@@ -85,13 +99,25 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
         </View>
         <Text style={{ color: theme.colors.text }}>{item.content}</Text>
         <View style={$commentActions}>
-          <Pressable style={$commentAction}>
-            <Icon icon="heart" size={14} color={theme.colors.textDim} />
+          <Pressable
+            style={$commentAction}
+            onPress={() => handleCommentLike(item.id)}
+            accessibilityLabel={`comment-like-${item.id}`}
+          >
+            <Icon
+              icon="heart"
+              size={14}
+              color={commentLiked[item.id] ? theme.colors.palette.accent500 : theme.colors.textDim}
+            />
             <Text size="xs" style={{ color: theme.colors.textDim }}>
-              {item.likeCount}
+              {item.likeCount + (commentLiked[item.id] ? 1 : 0)}
             </Text>
           </Pressable>
-          <Pressable style={$commentAction}>
+          <Pressable
+            style={$commentAction}
+            onPress={() => handleReply(item.userName)}
+            accessibilityLabel={`comment-reply-${item.id}`}
+          >
             <Text size="xs" style={{ color: theme.colors.textDim }}>
               Trả lời
             </Text>
@@ -213,7 +239,11 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
             <Icon icon="components" size={22} color={theme.colors.textDim} />
             <Text style={{ color: theme.colors.textDim }}>{post.commentCount}</Text>
           </Pressable>
-          <Pressable style={$actionButton}>
+          <Pressable
+            style={$actionButton}
+            onPress={handleSharePost}
+            accessibilityLabel="post-share-button"
+          >
             <Icon icon="caretRight" size={22} color={theme.colors.textDim} />
             <Text style={{ color: theme.colors.textDim }}>{post.shareCount}</Text>
           </Pressable>

@@ -45,13 +45,17 @@ export type AppStackParamList = {
   // Main app
   Main: NavigatorScreenParams<MainTabParamList>
   // Detail screens
-  TourDetails: { tourId: string }
-  PlaceDetails: { placeId: string }
-  GuideProfile: { guideId: string }
-  ProvinceDetails: { provinceId: string }
-  PostDetails: { postId: string }
+  TourDetails: { tourId: string; source?: string }
+  PlaceDetails: { placeId: string; source?: string }
+  GuideProfile: { guideId: string; source?: string }
+  ProvinceDetails: { provinceId: string; source?: string }
+  PostDetails: { postId: string; source?: string }
   // Action screens
-  Search: { initialQuery?: string; initialFilter?: "place" | "tour" | "guide" | "all" }
+  Search: {
+    initialQuery?: string
+    initialFilter?: "place" | "tour" | "guide" | "all"
+    source?: string
+  }
   Booking: { tourId: string }
   Chat: { recipientId: string; recipientName: string }
   CreatePost: undefined

@@ -32,7 +32,11 @@ export function MapScreen() {
         <Pressable
           style={themed($searchBar)}
           onPress={() =>
-            (navigation as any).navigate("Search", { initialQuery: "", initialFilter: "place" })
+            (navigation as any).navigate("Search", {
+              initialQuery: "",
+              initialFilter: "place",
+              source: "map-search",
+            })
           }
           accessibilityLabel="map-search-bar"
         >
@@ -72,7 +76,12 @@ export function MapScreen() {
       <View style={themed($bottomBar)}>
         <Pressable
           style={themed($actionButton)}
-          onPress={() => (navigation as any).navigate("Search", { initialQuery: "near me" })}
+          onPress={() =>
+            (navigation as any).navigate("Search", {
+              initialQuery: "near me",
+              source: "map-action-nearme",
+            })
+          }
           accessibilityLabel="map-action-nearme"
         >
           <Icon icon="pin" size={20} color={theme.colors.tint} />
@@ -81,7 +90,12 @@ export function MapScreen() {
 
         <Pressable
           style={themed($actionButton)}
-          onPress={() => (navigation as any).navigate("Search", { initialQuery: "directions" })}
+          onPress={() =>
+            (navigation as any).navigate("Search", {
+              initialQuery: "directions",
+              source: "map-action-directions",
+            })
+          }
           accessibilityLabel="map-action-directions"
         >
           <Icon icon="components" size={20} color={theme.colors.tint} />

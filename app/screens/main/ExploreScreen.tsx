@@ -2,8 +2,9 @@
  * ExploreScreen - Browse and filter places, food, tours
  * Max 200 lines per rule
  */
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useRoute } from "@react-navigation/native"
 import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
@@ -29,6 +30,14 @@ export function ExploreScreen() {
   const { themed, theme } = useAppTheme()
   const navigation = useNavigation()
   const [selectedCategory, setSelectedCategory] = useState<Category>("all")
+  const route = useRoute()
+
+  useEffect(() => {
+    const params = (route.params || {}) as { initialCategory?: Category; source?: string }
+    if (params?.initialCategory && params.initialCategory !== selectedCategory) {
+      setSelectedCategory(params.initialCategory)
+    }
+  }, [route.params, selectedCategory])
 
   const categories: CategoryItem[] = [
     { id: "all", label: t("explore.categories.all"), icon: "components" },
@@ -72,7 +81,9 @@ export function ExploreScreen() {
         reviewCount={item.reviewCount}
         category={item.category}
         address={item.address}
-        onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
+        onPress={() =>
+          (navigation as any).navigate("PlaceDetails", { placeId: item.id, source: "explore" })
+        }
         onFavorite={() => {
           const { toggleSavedPlace } = require("@/services/mock/users")
           toggleSavedPlace(item.id)
@@ -91,7 +102,12 @@ export function ExploreScreen() {
         <Text style={themed($title)}>{t("explore.title")}</Text>
         <Pressable
           style={themed($filterButton)}
-          onPress={() => (navigation as any).navigate("Search", { initialFilter: "place" })}
+          onPress={() =>
+            (navigation as any).navigate("Search", {
+              initialFilter: "place",
+              source: "explore-filter",
+            })
+          }
           accessibilityLabel="explore-filter-button"
         >
           <Icon icon="settings" size={20} color={theme.colors.text} />
@@ -101,7 +117,7 @@ export function ExploreScreen() {
       {/* Search Bar */}
       <Pressable
         style={themed($searchBar)}
-        onPress={() => navigation.navigate("Search" as never)}
+        onPress={() => (navigation as any).navigate("Search", { source: "explore-search" })}
         accessibilityLabel="explore-search-bar"
       >
         <Icon icon="components" size={18} color={theme.colors.textDim} />
@@ -125,7 +141,7 @@ export function ExploreScreen() {
         </Text>
         <Pressable
           style={$sortButton}
-          onPress={() => navigation.navigate("Search" as never)}
+          onPress={() => (navigation as any).navigate("Search", { source: "explore-sort" })}
           accessibilityLabel="explore-sort-button"
         >
           <Text style={themed($sortText)}>{t("explore.sortByLabel")}</Text>

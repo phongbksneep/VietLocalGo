@@ -30,6 +30,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
   const [tour, setTour] = useState<Tour | null>(null)
   const [guide, setGuide] = useState<Guide | null>(null)
   const [loading, setLoading] = useState(true)
+  const [isSaved, setIsSaved] = useState(false)
 
   useEffect(() => {
     const fetchData = () => {
@@ -42,6 +43,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
       setLoading(false)
     }
     fetchData()
+    setIsSaved(require("@/services/mock/users").isSavedTour(tourId))
   }, [tourId])
 
   const handleBooking = () => {
@@ -85,8 +87,20 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
         <Text preset="heading" numberOfLines={1} style={$headerTitle}>
           Chi tiết tour
         </Text>
-        <Pressable style={$headerAction}>
-          <Icon icon="heart" size={22} color={theme.colors.text} />
+        <Pressable
+          style={$headerAction}
+          onPress={() => {
+            const { toggleSavedTour } = require("@/services/mock/users")
+            toggleSavedTour(tourId)
+            setIsSaved((v) => !v)
+          }}
+          accessibilityLabel="tour-save-button"
+        >
+          <Icon
+            icon="heart"
+            size={22}
+            color={isSaved ? theme.colors.palette.accent500 : theme.colors.text}
+          />
         </Pressable>
       </View>
 

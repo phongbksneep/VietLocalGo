@@ -149,7 +149,7 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
   const handleBookingPress = (booking: Booking) => {
     const tour = tours.find((t) => t.id === booking.tourId)
     if (tour) {
-      navigation.navigate("TourDetails", { tourId: booking.tourId })
+      navigation.navigate("TourDetails", { tourId: booking.tourId, source: "booking-history" })
     }
   }
 

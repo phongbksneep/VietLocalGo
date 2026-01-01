@@ -59,7 +59,9 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
         { backgroundColor: theme.colors.background },
         pressed && { opacity: 0.7 },
       ]}
-      onPress={() => navigation.navigate("TourDetails", { tourId: item.id })}
+      onPress={() =>
+        navigation.navigate("TourDetails", { tourId: item.id, source: "recommendations" })
+      }
     >
       <Image source={{ uri: item.images[0] }} style={$tourImage} />
 

@@ -150,13 +150,13 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
   const handleResultPress = (result: SearchResult) => {
     switch (result.type) {
       case "place":
-        navigation.navigate("PlaceDetails", { placeId: result.id })
+        navigation.navigate("PlaceDetails", { placeId: result.id, source: "search" })
         break
       case "tour":
-        navigation.navigate("TourDetails", { tourId: result.id })
+        navigation.navigate("TourDetails", { tourId: result.id, source: "search" })
         break
       case "guide":
-        navigation.navigate("GuideProfile", { guideId: result.id })
+        navigation.navigate("GuideProfile", { guideId: result.id, source: "search" })
         break
     }
   }

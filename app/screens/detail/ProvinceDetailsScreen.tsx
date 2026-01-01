@@ -49,11 +49,11 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
   }, [provinceId])
 
   const handlePlacePress = (place: Place) => {
-    navigation.navigate("PlaceDetails", { placeId: place.id })
+    navigation.navigate("PlaceDetails", { placeId: place.id, source: "province-details" })
   }
 
   const handleTourPress = (tour: Tour) => {
-    navigation.navigate("TourDetails", { tourId: tour.id })
+    navigation.navigate("TourDetails", { tourId: tour.id, source: "province-details" })
   }
 
   const handleViewAllPlaces = () => {

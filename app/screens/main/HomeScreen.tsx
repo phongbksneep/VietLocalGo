@@ -45,7 +45,9 @@ export function HomeScreen() {
         tourCount={item.totalTours}
         region={item.region}
         variant="featured"
-        onPress={() => (navigation as any).navigate("ProvinceDetails", { provinceId: item.id })}
+        onPress={() =>
+          (navigation as any).navigate("ProvinceDetails", { provinceId: item.id, source: "home" })
+        }
         style={$cardMargin}
       />
     ),
@@ -63,7 +65,9 @@ export function HomeScreen() {
         price={item.price}
         originalPrice={item.originalPrice}
         duration={item.duration}
-        onPress={() => (navigation as any).navigate("TourDetails", { tourId: item.id })}
+        onPress={() =>
+          (navigation as any).navigate("TourDetails", { tourId: item.id, source: "home" })
+        }
         style={$cardMargin}
       />
     ),
@@ -80,7 +84,9 @@ export function HomeScreen() {
         reviewCount={item.reviewCount}
         category={item.category}
         address={item.address}
-        onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
+        onPress={() =>
+          (navigation as any).navigate("PlaceDetails", { placeId: item.id, source: "home" })
+        }
         onFavorite={() => {
           const { toggleSavedPlace } = require("@/services/mock/users")
           toggleSavedPlace(item.id)
@@ -114,7 +120,7 @@ export function HomeScreen() {
       {/* Search Bar Placeholder */}
       <Pressable
         style={themed($searchBar)}
-        onPress={() => navigation.navigate("Search" as never)}
+        onPress={() => (navigation as any).navigate("Search", { source: "home-search" })}
         accessibilityLabel="search-bar"
       >
         <Icon icon="components" size={18} color={theme.colors.textDim} />
@@ -123,7 +129,10 @@ export function HomeScreen() {
 
       {/* Featured Provinces */}
       {renderSectionHeader(t("home.sections.featuredProvinces"), () =>
-        (navigation as any).navigate("Main", { screen: "Explore" }),
+        (navigation as any).navigate("Main", {
+          screen: "Explore",
+          params: { initialCategory: "all", source: "home-seeall-featuredProvinces" },
+        }),
       )}
       <FlatList
         data={provinces}
@@ -136,7 +145,10 @@ export function HomeScreen() {
 
       {/* Popular Tours */}
       {renderSectionHeader(t("home.popularTours"), () =>
-        (navigation as any).navigate("Main", { screen: "Explore" }),
+        (navigation as any).navigate("Main", {
+          screen: "Explore",
+          params: { initialCategory: "tourism", source: "home-seeall-popularTours" },
+        }),
       )}
       <FlatList
         data={tours}
@@ -149,7 +161,10 @@ export function HomeScreen() {
 
       {/* Nearby Places */}
       {renderSectionHeader(t("home.sections.nearbyPlaces"), () =>
-        (navigation as any).navigate("Main", { screen: "Explore" }),
+        (navigation as any).navigate("Main", {
+          screen: "Explore",
+          params: { initialCategory: "all", source: "home-seeall-nearbyPlaces" },
+        }),
       )}
       <FlatList
         data={places}
