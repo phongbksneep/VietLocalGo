@@ -129,7 +129,7 @@ export function ProfileScreen() {
       {/* Logout */}
       <Pressable style={themed($logoutButton)}>
         <Icon icon="x" size={18} color={theme.colors.error} />
-        <Text style={themed($logoutText)}>{t("profile.logout")}</Text>
+        <Text style={themed($logoutText)}>{t("profile.menu.logout")}</Text>
       </Pressable>
     </Screen>
   )
