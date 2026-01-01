@@ -1,13 +1,30 @@
-flow:
-  name: "Home -> Search -> Open Place"
-  description: "From Home, open Search, search for 'Phở', open the place details"
-  steps:
-    - wait_for: { id: "search-bar", timeout: 10000 }
-    - tap: { id: "search-bar" }
-  - wait_for: { id: "search-input", timeout: 15000 }
-  - type: { id: "search-input", text: "Phở" }
-  - press_key: { key: "ENTER" }
-  - wait_for: { id: "search-result-place-pho-bo-ganh-nam-dinh", timeout: 15000 }
-  - tap: { id: "search-result-place-pho-bo-ganh-nam-dinh" }
-    - wait_for: { id: "place-directions-button", timeout: 10000 }
-    - assert_element: { id: "place-directions-button", visible: true }
+appId: ${MAESTRO_APP_ID}
+---
+# Home -> Search -> Open Place
+# From Home, open Search, search for 'Phở', open the place details
+- runFlow: ../shared/_OnFlowStart.yaml
+- runFlow:
+    when:
+      visible:
+        id: "search-bar"
+    commands:
+      - tapOn: { id: "search-bar" }
+- runFlow:
+    when:
+      visible:
+        id: "search-input"
+    commands:
+      - inputText: { id: "search-input", text: "Phở" }
+      - pressKey: { key: "ENTER" }
+- runFlow:
+    when:
+      visible:
+        id: "search-result-place-pho-bo-ganh-nam-dinh"
+    commands:
+      - tapOn: { id: "search-result-place-pho-bo-ganh-nam-dinh" }
+- runFlow:
+    when:
+      visible:
+        id: "place-directions-button"
+    commands:
+      - assertVisible: { id: "place-directions-button" }

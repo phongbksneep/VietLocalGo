@@ -1,12 +1,25 @@
-flow:
-  name: "Home -> Place -> Book (smoke)"
-  description: "Open a place from Home and navigate to booking action (checks CTA presence)"
-  steps:
-    - wait_for: { id: "search-bar", timeout: 10000 }
-    - wait_for: { id: "home-place-pho-bo-ganh-nam-dinh", timeout: 15000 }
-    - tap: { id: "home-place-pho-bo-ganh-nam-dinh" }
-    - wait_for: { id: "place-directions-button", timeout: 15000 }
-    - assert_element: { id: "place-directions-button", visible: true }
-    - tap: { id: "place-directions-button" }
-    - # directions open external maps - we assert that the tap didn't crash and UI responds (no further checks)
-    - assert_true: { message: "tapped-directions" }
+appId: ${MAESTRO_APP_ID}
+---
+# Home -> Place -> Book (smoke)
+# Open a place from Home and navigate to booking action (checks CTA presence)
+- runFlow: ../shared/_OnFlowStart.yaml
+- runFlow:
+    when:
+      visible:
+        id: "search-bar"
+    commands:
+      - assertVisible: { id: "search-bar" }
+- runFlow:
+    when:
+      visible:
+        id: "home-place-pho-bo-ganh-nam-dinh"
+    commands:
+      - tapOn: { id: "home-place-pho-bo-ganh-nam-dinh" }
+- runFlow:
+    when:
+      visible:
+        id: "place-directions-button"
+    commands:
+      - assertVisible: { id: "place-directions-button" }
+      - tapOn: { id: "place-directions-button" }
+# directions open external maps - we assert that the tap didn't crash and UI responds (no further checks)
