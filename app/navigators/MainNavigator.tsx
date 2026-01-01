@@ -1,12 +1,11 @@
 /**
  * MainNavigator - Bottom Tab Navigator for main app screens
  */
-import { TextStyle, View, ViewStyle } from "react-native"
+import { View, ViewStyle } from "react-native"
 import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { CompositeScreenProps } from "@react-navigation/native"
 
 import { Icon, IconTypes } from "@/components/Icon"
-import { Text } from "@/components/Text"
 import { ExploreScreen } from "@/screens/ExploreScreen"
 import { ForumScreen } from "@/screens/ForumScreen"
 import { HomeScreen } from "@/screens/HomeScreen"
@@ -37,21 +36,12 @@ interface TabIconProps {
   focused: boolean
 }
 
-function TabIcon({ icon, label, focused }: TabIconProps) {
+function TabIcon({ icon, focused }: TabIconProps) {
   const { theme } = useAppTheme()
 
   return (
     <View style={$tabIconContainer}>
-      <Icon icon={icon} size={22} color={focused ? theme.colors.tint : theme.colors.textDim} />
-      <Text
-        style={[
-          $tabLabel,
-          { color: focused ? theme.colors.tint : theme.colors.textDim },
-          focused && $tabLabelActive,
-        ]}
-      >
-        {label}
-      </Text>
+      <Icon icon={icon} size={26} color={focused ? theme.colors.tint : theme.colors.textDim} />
     </View>
   )
 }
@@ -78,7 +68,7 @@ export function MainNavigator() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon icon="community" label="Trang chủ" focused={focused} />
+            <TabIcon icon="podcast" label="Trang chủ" focused={focused} />
           ),
         }}
       />
@@ -123,13 +113,4 @@ export function MainNavigator() {
 const $tabIconContainer: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
-}
-
-const $tabLabel: TextStyle = {
-  fontSize: 10,
-  marginTop: 4,
-}
-
-const $tabLabelActive: TextStyle = {
-  fontWeight: "600",
 }
