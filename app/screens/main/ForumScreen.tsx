@@ -4,6 +4,7 @@
  */
 import { useCallback, useState } from "react"
 import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
@@ -19,6 +20,7 @@ type Tab = "trending" | "recent" | "following"
 export function ForumScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
+  const navigation = useNavigation()
   const [activeTab, setActiveTab] = useState<Tab>("trending")
 
   const tabs: { id: Tab; label: string }[] = [
@@ -40,9 +42,11 @@ export function ForumScreen() {
         commentCount={item.commentCount}
         isLiked={item.isLiked}
         style={$postCard}
+        onPress={() => (navigation as any).navigate("PostDetails", { postId: item.id })}
+        onShare={() => {}}
       />
     ),
-    [],
+    [navigation],
   )
 
   return (
@@ -50,7 +54,11 @@ export function ForumScreen() {
       {/* Header */}
       <View style={$header}>
         <Text style={themed($title)}>{t("forum.title")}</Text>
-        <Pressable style={themed($searchButton)}>
+        <Pressable
+          style={themed($searchButton)}
+          onPress={() => navigation.navigate("Search" as never)}
+          accessibilityLabel="forum-search-button"
+        >
           <Icon icon="components" size={20} color={theme.colors.text} />
         </Pressable>
       </View>
@@ -80,7 +88,11 @@ export function ForumScreen() {
       />
 
       {/* FAB */}
-      <Pressable style={themed($fab)}>
+      <Pressable
+        style={themed($fab)}
+        onPress={() => navigation.navigate("CreatePost" as never)}
+        accessibilityLabel="forum-fab-create-post"
+      >
         <Icon icon="components" size={24} color={theme.colors.background} />
       </Pressable>
     </Screen>

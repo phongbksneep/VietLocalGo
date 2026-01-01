@@ -4,6 +4,7 @@
  */
 import { useCallback, useState } from "react"
 import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { CategoryButton } from "@/components/CategoryButton"
@@ -26,6 +27,7 @@ interface CategoryItem {
 export function ExploreScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
+  const navigation = useNavigation()
   const [selectedCategory, setSelectedCategory] = useState<Category>("all")
 
   const categories: CategoryItem[] = [
@@ -70,10 +72,11 @@ export function ExploreScreen() {
         reviewCount={item.reviewCount}
         category={item.category}
         address={item.address}
+        onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
         style={$placeCard}
       />
     ),
-    [],
+    [navigation],
   )
 
   return (
@@ -81,13 +84,21 @@ export function ExploreScreen() {
       {/* Header */}
       <View style={$header}>
         <Text style={themed($title)}>{t("explore.title")}</Text>
-        <Pressable style={themed($filterButton)}>
+        <Pressable
+          style={themed($filterButton)}
+          onPress={() => (navigation as any).navigate("Search", { initialFilter: "place" })}
+          accessibilityLabel="explore-filter-button"
+        >
           <Icon icon="settings" size={20} color={theme.colors.text} />
         </Pressable>
       </View>
 
       {/* Search Bar */}
-      <Pressable style={themed($searchBar)}>
+      <Pressable
+        style={themed($searchBar)}
+        onPress={() => navigation.navigate("Search" as never)}
+        accessibilityLabel="explore-search-bar"
+      >
         <Icon icon="components" size={18} color={theme.colors.textDim} />
         <Text style={themed($searchPlaceholder)}>{t("explore.searchPlaceholder")}</Text>
       </Pressable>
@@ -107,7 +118,11 @@ export function ExploreScreen() {
         <Text style={themed($resultsCount)}>
           {t("explore.results", { count: filteredPlaces.length })}
         </Text>
-        <Pressable style={$sortButton}>
+        <Pressable
+          style={$sortButton}
+          onPress={() => navigation.navigate("Search" as never)}
+          accessibilityLabel="explore-sort-button"
+        >
           <Text style={themed($sortText)}>{t("explore.sortByLabel")}</Text>
           <Icon icon="caretRight" size={14} color={theme.colors.textDim} />
         </Pressable>

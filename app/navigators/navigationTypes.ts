@@ -51,7 +51,7 @@ export type AppStackParamList = {
   ProvinceDetails: { provinceId: string }
   PostDetails: { postId: string }
   // Action screens
-  Search: undefined
+  Search: { initialQuery?: string; initialFilter?: "place" | "tour" | "guide" | "all" }
   Booking: { tourId: string }
   Chat: { recipientId: string; recipientName: string }
   CreatePost: undefined

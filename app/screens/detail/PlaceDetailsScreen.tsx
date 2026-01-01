@@ -3,8 +3,11 @@ import {
   ActivityIndicator,
   Image,
   ImageStyle,
+  Linking,
+  Platform,
   Pressable,
   ScrollView,
+  Share,
   TextStyle,
   View,
   ViewStyle,
@@ -48,7 +51,24 @@ export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, ro
   }
 
   const handleShare = () => {
-    // Share functionality
+    if (!place) return
+    const shareUrl = `https://www.google.com/maps/search/?api=1&query=${place.coordinates.lat},${place.coordinates.lng}`
+    Share.share({
+      message: `${place.name} - ${place.address}\n${shareUrl}`,
+    })
+  }
+
+  const handleDirections = () => {
+    if (!place) return
+    const { lat, lng } = place.coordinates
+    const label = encodeURIComponent(place.name)
+    const url = Platform.select({
+      ios: `http://maps.apple.com/?ll=${lat},${lng}&q=${label}`,
+      default: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
+    })
+    if (url) {
+      Linking.openURL(url)
+    }
   }
 
   if (loading) {
@@ -165,6 +185,8 @@ export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, ro
           preset="filled"
           text="Chỉ đường"
           style={$directionsButton}
+          onPress={handleDirections}
+          accessibilityLabel="place-directions-button"
           LeftAccessory={() => <Icon icon="pin" size={18} color="#FFFFFF" />}
         />
       </View>

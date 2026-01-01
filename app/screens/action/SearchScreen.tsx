@@ -41,7 +41,7 @@ const filterTypes: { id: SearchResultType | "all"; label: string }[] = [
 
 const recentSearches = ["Phủ Dầy", "Tour ẩm thực", "Chùa Cổ Lễ", "Làng nghề"]
 
-export const SearchScreen: FC<SearchScreenProps> = ({ navigation }) => {
+export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
   const { theme } = useAppTheme()
 
   const [query, setQuery] = useState("")
@@ -123,6 +123,21 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation }) => {
 
   const handleSearch = () => {
     performSearch(query)
+  }
+
+  // Initialize from route params (if provided)
+  if (route?.params) {
+    const { initialQuery, initialFilter } = route.params as {
+      initialQuery?: string
+      initialFilter?: SearchResultType | "all"
+    }
+    if (initialQuery && initialQuery !== query) {
+      setQuery(initialQuery)
+      performSearch(initialQuery)
+    }
+    if (initialFilter && initialFilter !== activeFilter) {
+      setActiveFilter(initialFilter)
+    }
   }
 
   const handleFilterChange = (filter: SearchResultType | "all") => {

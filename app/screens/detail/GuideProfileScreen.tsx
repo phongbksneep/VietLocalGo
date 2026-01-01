@@ -46,8 +46,10 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
   }
 
   const handleBookTour = () => {
-    // Navigate to guide's tours or search with guide filter
-    navigation.navigate("Search")
+    // Navigate to search with guide filter (show tours by this guide)
+    if (guide) {
+      ;(navigation as any).navigate("Search", { initialFilter: "tour", initialQuery: guide.name })
+    }
   }
 
   const renderReviewItem = ({

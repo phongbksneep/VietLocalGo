@@ -171,7 +171,11 @@ export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
             </Text>
           </View>
         </Pressable>
-        <Pressable style={$moreButton}>
+        <Pressable
+          style={$moreButton}
+          onPress={() => navigation.navigate("GuideProfile", { guideId: recipientId })}
+          accessibilityLabel="chat-more-button"
+        >
           <Icon icon="more" size={24} color={theme.colors.text} />
         </Pressable>
       </View>

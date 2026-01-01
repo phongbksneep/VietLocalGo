@@ -4,6 +4,7 @@
  */
 import { useState } from "react"
 import { Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
@@ -16,6 +17,7 @@ export function MapScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
   const [selectedFilter, setSelectedFilter] = useState<"all" | "food" | "tourism">("all")
+  const navigation = useNavigation()
 
   const filters = [
     { id: "all" as const, label: t("map.all") },
@@ -27,7 +29,13 @@ export function MapScreen() {
     <Screen preset="fixed" contentContainerStyle={themed($container)} safeAreaEdges={["top"]}>
       {/* Search Bar Overlay */}
       <View style={$searchOverlay}>
-        <Pressable style={themed($searchBar)}>
+        <Pressable
+          style={themed($searchBar)}
+          onPress={() =>
+            (navigation as any).navigate("Search", { initialQuery: "", initialFilter: "place" })
+          }
+          accessibilityLabel="map-search-bar"
+        >
           <Icon icon="components" size={18} color={theme.colors.textDim} />
           <Text style={themed($searchPlaceholder)}>{t("map.searchPlace")}</Text>
         </Pressable>
@@ -62,17 +70,29 @@ export function MapScreen() {
 
       {/* Bottom Action Bar */}
       <View style={themed($bottomBar)}>
-        <Pressable style={themed($actionButton)}>
+        <Pressable
+          style={themed($actionButton)}
+          onPress={() => (navigation as any).navigate("Search", { initialQuery: "near me" })}
+          accessibilityLabel="map-action-nearme"
+        >
           <Icon icon="pin" size={20} color={theme.colors.tint} />
           <Text style={themed($actionText)}>{t("map.nearMe")}</Text>
         </Pressable>
 
-        <Pressable style={themed($actionButton)}>
+        <Pressable
+          style={themed($actionButton)}
+          onPress={() => (navigation as any).navigate("Search", { initialQuery: "directions" })}
+          accessibilityLabel="map-action-directions"
+        >
           <Icon icon="components" size={20} color={theme.colors.tint} />
           <Text style={themed($actionText)}>{t("map.directions")}</Text>
         </Pressable>
 
-        <Pressable style={themed($actionButton)}>
+        <Pressable
+          style={themed($actionButton)}
+          onPress={() => navigation.navigate("SavedPlaces" as never)}
+          accessibilityLabel="map-action-saved"
+        >
           <Icon icon="heart" size={20} color={theme.colors.tint} />
           <Text style={themed($actionText)}>{t("map.saved")}</Text>
         </Pressable>

@@ -3,6 +3,7 @@
  * Max 200 lines per rule
  */
 import { Image, ImageStyle, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { Icon, IconTypes } from "@/components/Icon"
@@ -24,6 +25,7 @@ export function ProfileScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
   const user = currentUser
+  const navigation = useNavigation()
 
   const menuSections: { title: string; items: MenuItem[] }[] = [
     {
@@ -61,8 +63,28 @@ export function ProfileScreen() {
     },
   ]
 
+  const handleMenuPress = (id: string) => {
+    switch (id) {
+      case "bookings":
+        return navigation.navigate("BookingHistory" as never)
+      case "favorites":
+        return navigation.navigate("SavedPlaces" as never)
+      case "reviews":
+        return navigation.navigate("MyReviews" as never)
+      case "notifications":
+        return navigation.navigate("Notifications" as never)
+      default:
+        return navigation.navigate("Settings" as never)
+    }
+  }
+
   const renderMenuItem = (item: MenuItem, isLast: boolean) => (
-    <Pressable key={item.id} style={[themed($menuItem), !isLast && themed($menuItemBorder)]}>
+    <Pressable
+      key={item.id}
+      style={[themed($menuItem), !isLast && themed($menuItemBorder)]}
+      onPress={() => (item.onPress ? item.onPress() : handleMenuPress(item.id))}
+      accessibilityLabel={`profile-menu-${item.id}`}
+    >
       <View style={themed($menuIconContainer)}>
         <Icon icon={item.icon} size={18} color={theme.colors.tint} />
       </View>
@@ -79,7 +101,11 @@ export function ProfileScreen() {
       {/* Header */}
       <View style={$header}>
         <Text style={themed($title)}>{t("profile.title")}</Text>
-        <Pressable style={themed($settingsButton)}>
+        <Pressable
+          style={themed($settingsButton)}
+          onPress={() => navigation.navigate("Settings" as never)}
+          accessibilityLabel="settings-button"
+        >
           <Icon icon="settings" size={22} color={theme.colors.text} />
         </Pressable>
       </View>
@@ -91,7 +117,11 @@ export function ProfileScreen() {
           <Text style={themed($userName)}>{user.name}</Text>
           <Text style={themed($userEmail)}>{user.email}</Text>
         </View>
-        <Pressable style={themed($editButton)}>
+        <Pressable
+          style={themed($editButton)}
+          onPress={() => navigation.navigate("EditProfile" as never)}
+          accessibilityLabel="edit-profile-button"
+        >
           <Text style={themed($editText)}>{t("profile.editProfile")}</Text>
         </Pressable>
       </View>
@@ -127,7 +157,11 @@ export function ProfileScreen() {
       ))}
 
       {/* Logout */}
-      <Pressable style={themed($logoutButton)}>
+      <Pressable
+        style={themed($logoutButton)}
+        onPress={() => navigation.navigate("Login" as never)}
+        accessibilityLabel="logout-button"
+      >
         <Icon icon="x" size={18} color={theme.colors.error} />
         <Text style={themed($logoutText)}>{t("profile.menu.logout")}</Text>
       </Pressable>

@@ -55,7 +55,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
     setIsSubmitting(true)
     await new Promise((resolve) => setTimeout(resolve, 1500))
     setIsSubmitting(false)
-    navigation.navigate("Main", { screen: "Profile" })
+    // After successful booking go to booking history
+    navigation.navigate("BookingHistory")
   }
 
   const totalPrice = tour ? tour.price * people : 0

@@ -4,6 +4,7 @@
  */
 import { useCallback } from "react"
 import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
@@ -19,6 +20,7 @@ import type { ThemedStyle } from "@/theme/types"
 export function HomeScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
+  const navigation = useNavigation()
 
   const renderSectionHeader = (title: string, onSeeAll?: () => void) => (
     <View style={$sectionHeader}>
@@ -42,10 +44,11 @@ export function HomeScreen() {
         tourCount={item.totalTours}
         region={item.region}
         variant="featured"
+        onPress={() => (navigation as any).navigate("ProvinceDetails", { provinceId: item.id })}
         style={$cardMargin}
       />
     ),
-    [],
+    [navigation],
   )
 
   const renderTour = useCallback(
@@ -59,10 +62,11 @@ export function HomeScreen() {
         price={item.price}
         originalPrice={item.originalPrice}
         duration={item.duration}
+        onPress={() => (navigation as any).navigate("TourDetails", { tourId: item.id })}
         style={$cardMargin}
       />
     ),
-    [],
+    [navigation],
   )
 
   const renderPlace = useCallback(
@@ -75,10 +79,11 @@ export function HomeScreen() {
         reviewCount={item.reviewCount}
         category={item.category}
         address={item.address}
+        onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
         style={$cardMargin}
       />
     ),
-    [],
+    [navigation],
   )
 
   return (
@@ -89,20 +94,30 @@ export function HomeScreen() {
           <Text style={themed($greeting)}>{t("home.greeting")}</Text>
           <Text style={themed($welcomeText)}>{t("home.welcome")}</Text>
         </View>
-        <Pressable style={themed($notificationButton)}>
+        <Pressable
+          style={themed($notificationButton)}
+          onPress={() => navigation.navigate("Notifications" as never)}
+          accessibilityLabel="notifications-button"
+        >
           <Icon icon="bell" size={24} color={theme.colors.text} />
           <View style={themed($notificationBadge)} />
         </Pressable>
       </View>
 
       {/* Search Bar Placeholder */}
-      <Pressable style={themed($searchBar)}>
+      <Pressable
+        style={themed($searchBar)}
+        onPress={() => navigation.navigate("Search" as never)}
+        accessibilityLabel="search-bar"
+      >
         <Icon icon="components" size={18} color={theme.colors.textDim} />
         <Text style={themed($searchPlaceholder)}>{t("home.searchPlaceholder")}</Text>
       </Pressable>
 
       {/* Featured Provinces */}
-      {renderSectionHeader(t("home.sections.featuredProvinces"))}
+      {renderSectionHeader(t("home.sections.featuredProvinces"), () =>
+        (navigation as any).navigate("Main", { screen: "Explore" }),
+      )}
       <FlatList
         data={provinces}
         renderItem={renderProvince}
@@ -113,7 +128,9 @@ export function HomeScreen() {
       />
 
       {/* Popular Tours */}
-      {renderSectionHeader(t("home.popularTours"), () => {})}
+      {renderSectionHeader(t("home.popularTours"), () =>
+        (navigation as any).navigate("Main", { screen: "Explore" }),
+      )}
       <FlatList
         data={tours}
         renderItem={renderTour}
@@ -124,7 +141,9 @@ export function HomeScreen() {
       />
 
       {/* Nearby Places */}
-      {renderSectionHeader(t("home.sections.nearbyPlaces"), () => {})}
+      {renderSectionHeader(t("home.sections.nearbyPlaces"), () =>
+        (navigation as any).navigate("Main", { screen: "Explore" }),
+      )}
       <FlatList
         data={places}
         renderItem={renderPlace}
