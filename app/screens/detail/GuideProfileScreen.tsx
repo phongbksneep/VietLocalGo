@@ -152,9 +152,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
           {guide.isVerified && (
             <View style={[$verifiedBadge, { backgroundColor: theme.colors.palette.secondary100 }]}>
               <Icon icon="check" size={14} color={theme.colors.palette.secondary500} />
-              <Text style={{ color: theme.colors.palette.secondary500, fontSize: 12 }}>
-                Đã xác minh
-              </Text>
+              <Text style={$verifiedText(theme)}>Đã xác minh</Text>
             </View>
           )}
 
@@ -203,7 +201,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
           <Text preset="subheading" style={$sectionTitle}>
             Giới thiệu
           </Text>
-          <Text style={{ color: theme.colors.text, lineHeight: 22 }}>{guide.bio}</Text>
+          <Text style={$bioText(theme)}>{guide.bio}</Text>
         </View>
 
         {/* Specialties */}
@@ -269,7 +267,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
           <View style={$priceRow}>
             <Text preset="subheading">Giá thuê</Text>
             <View style={$priceValue}>
-              <Text preset="bold" style={{ color: theme.colors.tint, fontSize: 20 }}>
+              <Text preset="bold" style={$priceAmount(theme)}>
                 {guide.hourlyRate.toLocaleString("vi-VN")}đ
               </Text>
               <Text style={{ color: theme.colors.textDim }}>/giờ</Text>
@@ -497,3 +495,18 @@ const $chatButton: ViewStyle = {
 const $bookButton: ViewStyle = {
   flex: 2,
 }
+
+const $verifiedText = (theme: { colors: { palette: { secondary500: string } } }): TextStyle => ({
+  color: theme.colors.palette.secondary500,
+  fontSize: 12,
+})
+
+const $bioText = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+  lineHeight: 22,
+})
+
+const $priceAmount = (theme: { colors: { tint: string } }): TextStyle => ({
+  color: theme.colors.tint,
+  fontSize: 20,
+})

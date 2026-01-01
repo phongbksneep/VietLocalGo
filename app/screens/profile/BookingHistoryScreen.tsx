@@ -217,10 +217,7 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
           return (
             <Pressable
               key={tab}
-              style={[
-                $tabButton,
-                isActive && { borderBottomColor: theme.colors.tint, borderBottomWidth: 2 },
-              ]}
+              style={[$tabButton, isActive && $tabButtonActive(theme)]}
               onPress={() => setActiveTab(tab)}
             >
               <Text
@@ -365,3 +362,8 @@ const $emptyContainer: ViewStyle = {
   paddingVertical: spacing.xxxl,
   gap: spacing.md,
 }
+
+const $tabButtonActive = (theme: { colors: { tint: string } }): ViewStyle => ({
+  borderBottomColor: theme.colors.tint,
+  borderBottomWidth: 2,
+})

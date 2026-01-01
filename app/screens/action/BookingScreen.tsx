@@ -140,7 +140,10 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
                     ]}
                     onPress={() => setSelectedDate(date)}
                   >
-                    <Text size="xs" style={{ color: isSelected ? "#FFFFFF" : theme.colors.text }}>
+                    <Text
+                      size="xs"
+                      style={isSelected ? $dateTextSelected : $dateTextDefault(theme)}
+                    >
                       {date}
                     </Text>
                   </Pressable>
@@ -172,7 +175,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
               <Icon icon="caretRight" size={18} color={theme.colors.text} />
             </Pressable>
           </View>
-          <Text size="xs" style={{ color: theme.colors.textDim, textAlign: "center" }}>
+          <Text size="xs" style={$peopleHint(theme)}>
             Tối thiểu {tour.groupSize.min}, tối đa {tour.groupSize.max} người
           </Text>
         </View>
@@ -392,3 +395,16 @@ const $submitButton: ViewStyle = {
   flex: 1,
   marginLeft: spacing.md,
 }
+
+const $dateTextSelected: TextStyle = {
+  color: "#FFFFFF",
+}
+
+const $dateTextDefault = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+})
+
+const $peopleHint = (theme: { colors: { textDim: string } }): TextStyle => ({
+  color: theme.colors.textDim,
+  textAlign: "center",
+})

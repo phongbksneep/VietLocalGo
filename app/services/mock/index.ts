@@ -24,6 +24,9 @@ export * from "./posts"
 // Users
 export * from "./users"
 
+// Saved Places
+export * from "./savedPlaces"
+
 // Category definitions
 export const categories = {
   food: {

@@ -9,40 +9,42 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 import Config from "@/config"
 import { useAuth } from "@/context/AuthContext"
-import { ErrorBoundary } from "@/screens/ErrorScreen/ErrorBoundary"
-import { LoginScreen } from "@/screens/LoginScreen"
-import { OnboardingScreen } from "@/screens/OnboardingScreen"
-import { RegisterScreen } from "@/screens/RegisterScreen"
-import { WelcomeScreen } from "@/screens/WelcomeScreen"
-// Auth screens
-import { ForgotPasswordScreen } from "@/screens/ForgotPasswordScreen"
-import { OTPVerificationScreen } from "@/screens/OTPVerificationScreen"
-// Detail screens
-import { PlaceDetailsScreen } from "@/screens/PlaceDetailsScreen"
-import { TourDetailsScreen } from "@/screens/TourDetailsScreen"
-import { GuideProfileScreen } from "@/screens/GuideProfileScreen"
-import { ProvinceDetailsScreen } from "@/screens/ProvinceDetailsScreen"
-import { PostDetailsScreen } from "@/screens/PostDetailsScreen"
-// Action screens
-import { SearchScreen } from "@/screens/SearchScreen"
-import { BookingScreen } from "@/screens/BookingScreen"
-import { ChatScreen } from "@/screens/ChatScreen"
-import { CreatePostScreen } from "@/screens/CreatePostScreen"
-import { SubmitReviewScreen } from "@/screens/SubmitReviewScreen"
-// AI Features
-import { QuestionnaireScreen } from "@/screens/QuestionnaireScreen"
-import { RecommendationsScreen } from "@/screens/RecommendationsScreen"
-// Profile sections
-import { EditProfileScreen } from "@/screens/EditProfileScreen"
-import { SettingsScreen } from "@/screens/SettingsScreen"
-import { NotificationsScreen } from "@/screens/NotificationsScreen"
-import { BookingHistoryScreen } from "@/screens/BookingHistoryScreen"
-import { SavedPlacesScreen } from "@/screens/SavedPlacesScreen"
-import { MyReviewsScreen } from "@/screens/MyReviewsScreen"
-import { GuideListScreen } from "@/screens/GuideListScreen"
+import {
+  // Auth screens
+  ForgotPasswordScreen,
+  LoginScreen,
+  OnboardingScreen,
+  OTPVerificationScreen,
+  RegisterScreen,
+  WelcomeScreen,
+  // Main screens (via MainNavigator)
+  // Detail screens
+  GuideProfileScreen,
+  PlaceDetailsScreen,
+  PostDetailsScreen,
+  ProvinceDetailsScreen,
+  TourDetailsScreen,
+  // Action screens
+  BookingScreen,
+  ChatScreen,
+  CreatePostScreen,
+  GuideListScreen,
+  QuestionnaireScreen,
+  RecommendationsScreen,
+  SearchScreen,
+  SubmitReviewScreen,
+  // Profile screens
+  BookingHistoryScreen,
+  EditProfileScreen,
+  MyReviewsScreen,
+  NotificationsScreen,
+  SavedPlacesScreen,
+  SettingsScreen,
+  // Error
+  ErrorBoundary,
+} from "@/screens"
 import { useAppTheme } from "@/theme/context"
 
-// Demo navigator removed - deleted unused demo screens
 import { MainNavigator } from "./MainNavigator"
 import type { AppStackParamList, NavigationProps } from "./navigationTypes"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"

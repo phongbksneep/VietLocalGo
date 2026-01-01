@@ -129,7 +129,7 @@ export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, ro
           <Text preset="formLabel" style={$sectionTitle}>
             Giới thiệu
           </Text>
-          <Text style={{ color: theme.colors.text, lineHeight: 22 }}>{place.description}</Text>
+          <Text style={$descriptionText(theme)}>{place.description}</Text>
         </View>
 
         {/* Opening Hours */}
@@ -287,3 +287,8 @@ const $reviewButton: ViewStyle = {
 const $directionsButton: ViewStyle = {
   flex: 1,
 }
+
+const $descriptionText = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+  lineHeight: 22,
+})

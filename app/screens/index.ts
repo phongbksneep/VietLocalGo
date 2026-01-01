@@ -1,36 +1,24 @@
-export * from "./BookingHistoryScreen"
-export * from "./BookingScreen"
-export * from "./ChatScreen"
-export * from "./CreatePostScreen"
+// Screen exports organized by module
+// Auth screens
+export * from "./auth"
+
+// Main tab screens
+export * from "./main"
+
+// Detail screens
+export * from "./detail"
+
+// Action screens
+export * from "./action"
+
+// Profile screens
+export * from "./profile"
+
+// Error screens
+export * from "./ErrorScreen/ErrorBoundary"
+
+// Demo screens (legacy)
 export * from "./DemoCommunityScreen"
 export * from "./DemoDebugScreen"
 export * from "./DemoPodcastListScreen"
 export * from "./DemoShowroomScreen/DemoShowroomScreen"
-export * from "./EditProfileScreen"
-export * from "./ErrorScreen/ErrorBoundary"
-export * from "./ExploreScreen"
-export * from "./ForgotPasswordScreen"
-export * from "./ForumScreen"
-export * from "./GuideListScreen"
-export * from "./GuideProfileScreen"
-export * from "./HomeScreen"
-export * from "./LoginScreen"
-export * from "./MapScreen"
-export * from "./MyReviewsScreen"
-export * from "./NotificationsScreen"
-export * from "./OTPVerificationScreen"
-export * from "./OnboardingScreen"
-export * from "./PlaceDetailsScreen"
-export * from "./PostDetailsScreen"
-export * from "./ProfileScreen"
-export * from "./ProvinceDetailsScreen"
-export * from "./QuestionnaireScreen"
-export * from "./RecommendationsScreen"
-export * from "./RegisterScreen"
-export * from "./SavedPlacesScreen"
-export * from "./SearchScreen"
-export * from "./SettingsScreen"
-export * from "./SplashScreen"
-export * from "./SubmitReviewScreen"
-export * from "./TourDetailsScreen"
-export * from "./WelcomeScreen"

@@ -6,11 +6,7 @@ import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigatio
 import { CompositeScreenProps } from "@react-navigation/native"
 
 import { Icon, IconTypes } from "@/components/Icon"
-import { ExploreScreen } from "@/screens/ExploreScreen"
-import { ForumScreen } from "@/screens/ForumScreen"
-import { HomeScreen } from "@/screens/HomeScreen"
-import { MapScreen } from "@/screens/MapScreen"
-import { ProfileScreen } from "@/screens/ProfileScreen"
+import { ExploreScreen, ForumScreen, HomeScreen, MapScreen, ProfileScreen } from "@/screens"
 import { useAppTheme } from "@/theme/context"
 
 import type { AppStackParamList, AppStackScreenProps } from "./navigationTypes"

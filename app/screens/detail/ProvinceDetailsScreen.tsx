@@ -141,10 +141,7 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
         {/* Hero Image */}
         <ImageBackground source={{ uri: province.thumbnail }} style={$heroImage}>
           <View style={$heroOverlay}>
-            <Pressable
-              onPress={() => navigation.goBack()}
-              style={[$backButtonHero, { backgroundColor: "rgba(0,0,0,0.3)" }]}
-            >
+            <Pressable onPress={() => navigation.goBack()} style={$backButtonHero}>
               <Icon icon="back" size={24} color="#FFFFFF" />
             </Pressable>
             <View style={$heroContent}>
@@ -188,7 +185,7 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
           <Text preset="subheading" style={$sectionTitle}>
             Giới thiệu
           </Text>
-          <Text style={{ color: theme.colors.text, lineHeight: 22 }}>{province.description}</Text>
+          <Text style={$descriptionText(theme)}>{province.description}</Text>
         </View>
 
         {/* Popular Places */}
@@ -283,6 +280,7 @@ const $backButtonHero: ViewStyle = {
   alignItems: "center",
   margin: spacing.md,
   marginTop: spacing.xl + spacing.md,
+  backgroundColor: "rgba(0,0,0,0.3)",
 }
 
 const $heroContent: ViewStyle = {
@@ -424,3 +422,8 @@ const $findGuideText: ViewStyle = {
 const $bottomSpacer: ViewStyle = {
   height: spacing.xl,
 }
+
+const $descriptionText = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+  lineHeight: 22,
+})

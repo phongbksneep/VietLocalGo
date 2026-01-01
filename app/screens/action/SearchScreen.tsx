@@ -247,7 +247,7 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation }) => {
               ]}
               onPress={() => handleFilterChange(filter.id)}
             >
-              <Text size="xs" style={{ color: isActive ? "#FFFFFF" : theme.colors.text }}>
+              <Text size="xs" style={isActive ? $filterTextActive : $filterTextDefault(theme)}>
                 {filter.label}
               </Text>
             </Pressable>
@@ -429,3 +429,11 @@ const $emptyContainer: ViewStyle = {
 const $emptySubtext: TextStyle = {
   textAlign: "center",
 }
+
+const $filterTextActive: TextStyle = {
+  color: "#FFFFFF",
+}
+
+const $filterTextDefault = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+})

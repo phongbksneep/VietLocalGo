@@ -126,13 +126,10 @@ export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
               : { backgroundColor: theme.colors.palette.neutral200 },
           ]}
         >
-          <Text style={[$messageText, { color: isMe ? "#FFFFFF" : theme.colors.text }]}>
+          <Text style={[$messageText, isMe ? $messageTextMe : $messageTextOther(theme)]}>
             {item.text}
           </Text>
-          <Text
-            size="xxs"
-            style={[$messageTime, { color: isMe ? "rgba(255,255,255,0.7)" : theme.colors.textDim }]}
-          >
+          <Text size="xxs" style={[$messageTime, isMe ? $messageTimeMe : $messageTimeOther(theme)]}>
             {formatTime(item.timestamp)}
           </Text>
         </View>
@@ -380,3 +377,19 @@ const $sendButton: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
 }
+
+const $messageTextMe: TextStyle = {
+  color: "#FFFFFF",
+}
+
+const $messageTextOther = (theme: { colors: { text: string } }): TextStyle => ({
+  color: theme.colors.text,
+})
+
+const $messageTimeMe: TextStyle = {
+  color: "rgba(255,255,255,0.7)",
+}
+
+const $messageTimeOther = (theme: { colors: { textDim: string } }): TextStyle => ({
+  color: theme.colors.textDim,
+})
