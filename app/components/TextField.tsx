@@ -189,6 +189,8 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
       style={$containerStyles}
       onPress={focusInput}
       accessibilityState={{ disabled }}
+      testID={props.testID}
+      accessibilityLabel={props.accessibilityLabel}
     >
       {!!(label || labelTx) && (
         <Text
@@ -220,6 +222,10 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
           {...TextInputProps}
           editable={!disabled}
           style={themed($inputStyles)}
+          testID={props.testID ? `${props.testID}-input` : undefined}
+          accessibilityLabel={
+            props.accessibilityLabel ? `${props.accessibilityLabel}-input` : undefined
+          }
         />
 
         {!!RightAccessory && (

@@ -32,6 +32,8 @@ export interface TourCardProps {
   duration: string
   onPress?: () => void
   style?: StyleProp<ViewStyle>
+  testID?: string
+  accessibilityLabel?: string
 }
 
 export const TourCard = memo(function TourCard(props: TourCardProps) {
@@ -49,6 +51,8 @@ export const TourCard = memo(function TourCard(props: TourCardProps) {
     <Pressable
       style={({ pressed }) => [themed($container), style, pressed && $pressed]}
       onPress={onPress}
+      testID={props.testID}
+      accessibilityLabel={props.accessibilityLabel}
     >
       <View style={$imageContainer}>
         <Image

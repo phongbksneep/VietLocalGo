@@ -1,0 +1,13 @@
+flow:
+  name: "Home -> Search -> Open Place"
+  description: "From Home, open Search, search for 'Phở', open the place details"
+  steps:
+    - wait_for: { id: "search-bar", timeout: 10000 }
+    - tap: { id: "search-bar" }
+  - wait_for: { id: "search-input", timeout: 15000 }
+  - type: { id: "search-input", text: "Phở" }
+  - press_key: { key: "ENTER" }
+  - wait_for: { id: "search-result-place-pho-bo-ganh-nam-dinh", timeout: 15000 }
+  - tap: { id: "search-result-place-pho-bo-ganh-nam-dinh" }
+    - wait_for: { id: "place-directions-button", timeout: 10000 }
+    - assert_element: { id: "place-directions-button", visible: true }

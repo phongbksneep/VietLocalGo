@@ -140,6 +140,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
                       },
                     ]}
                     onPress={() => setSelectedDate(date)}
+                    testID={`date-${date}`}
+                    accessibilityLabel={`date-${date}`}
                   >
                     <Text
                       size="xs"
@@ -163,15 +165,27 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
             <Pressable
               style={[$peopleButton, { backgroundColor: theme.colors.palette.neutral200 }]}
               onPress={() => setPeople(Math.max(tour.groupSize.min, people - 1))}
+              testID="people-decrement"
+              accessibilityLabel="people-decrement"
             >
               <Icon icon="caretLeft" size={18} color={theme.colors.text} />
             </Pressable>
             <Text preset="bold" style={$peopleCount}>
               {people}
             </Text>
+            <Text
+              testID="people-count"
+              accessibilityLabel="people-count"
+              preset="bold"
+              style={$peopleCount}
+            >
+              {people}
+            </Text>
             <Pressable
               style={[$peopleButton, { backgroundColor: theme.colors.palette.neutral200 }]}
               onPress={() => setPeople(Math.min(tour.groupSize.max, people + 1))}
+              testID="people-increment"
+              accessibilityLabel="people-increment"
             >
               <Icon icon="caretRight" size={18} color={theme.colors.text} />
             </Pressable>
@@ -192,6 +206,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
             value={name}
             onChangeText={setName}
             containerStyle={$textField}
+            testID="booking-name"
+            accessibilityLabel="booking-name"
           />
           <TextField
             label="Số điện thoại"
@@ -200,6 +216,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
             onChangeText={setPhone}
             keyboardType="phone-pad"
             containerStyle={$textField}
+            testID="booking-phone"
+            accessibilityLabel="booking-phone"
           />
         </View>
 
@@ -239,6 +257,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
           text={isSubmitting ? "Đang xử lý..." : "Xác nhận đặt"}
           style={$submitButton}
           onPress={handleSubmit}
+          testID="booking-submit-button"
+          accessibilityLabel="booking-submit-button"
           disabled={!isValid || isSubmitting}
         />
       </View>

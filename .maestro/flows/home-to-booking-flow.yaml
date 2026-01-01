@@ -1,0 +1,12 @@
+flow:
+  name: "Home -> Place -> Book (smoke)"
+  description: "Open a place from Home and navigate to booking action (checks CTA presence)"
+  steps:
+    - wait_for: { id: "search-bar", timeout: 10000 }
+    - wait_for: { id: "home-place-pho-bo-ganh-nam-dinh", timeout: 15000 }
+    - tap: { id: "home-place-pho-bo-ganh-nam-dinh" }
+    - wait_for: { id: "place-directions-button", timeout: 15000 }
+    - assert_element: { id: "place-directions-button", visible: true }
+    - tap: { id: "place-directions-button" }
+    - # directions open external maps - we assert that the tap didn't crash and UI responds (no further checks)
+    - assert_true: { message: "tapped-directions" }

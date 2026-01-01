@@ -192,6 +192,8 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
     <Pressable
       style={[$resultCard, { backgroundColor: theme.colors.background }]}
       onPress={() => handleResultPress(item)}
+      testID={`search-result-${item.type}-${item.id}`}
+      accessibilityLabel={`search-result-${item.type}-${item.id}`}
     >
       <Image source={{ uri: item.image }} style={$resultImage} />
       <View style={$resultContent}>
@@ -228,6 +230,8 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
           containerStyle={$searchFieldContainer}
           inputWrapperStyle={$searchFieldWrapper}
           placeholder="Tìm kiếm địa điểm, tour, HDV..."
+          testID="search-input"
+          accessibilityLabel="search-input"
           value={query}
           onChangeText={setQuery}
           onSubmitEditing={handleSearch}

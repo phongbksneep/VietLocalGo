@@ -32,6 +32,8 @@ export interface PlaceCardProps {
   onFavorite?: () => void
   isFavorite?: boolean
   style?: StyleProp<ViewStyle>
+  testID?: string
+  accessibilityLabel?: string
 }
 
 export const PlaceCard = memo(function PlaceCard(props: PlaceCardProps) {
@@ -53,6 +55,8 @@ export const PlaceCard = memo(function PlaceCard(props: PlaceCardProps) {
     <Pressable
       style={({ pressed }) => [themed($container), style, pressed && $pressed]}
       onPress={onPress}
+      testID={props.testID}
+      accessibilityLabel={props.accessibilityLabel}
     >
       <View style={$imageContainer}>
         <Image

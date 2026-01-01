@@ -201,7 +201,10 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
   return (
     <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$container}>
       {/* Header */}
-      <View style={[$header, { backgroundColor: theme.colors.background }]}>
+      <View
+        style={[$header, { backgroundColor: theme.colors.background }]}
+        testID="booking-history-screen"
+      >
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>

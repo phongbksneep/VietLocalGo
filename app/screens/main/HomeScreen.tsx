@@ -68,6 +68,8 @@ export function HomeScreen() {
         onPress={() =>
           (navigation as any).navigate("TourDetails", { tourId: item.id, source: "home" })
         }
+        testID={`home-tour-${item.id}`}
+        accessibilityLabel={`home-tour-${item.id}`}
         style={$cardMargin}
       />
     ),
@@ -87,6 +89,8 @@ export function HomeScreen() {
         onPress={() =>
           (navigation as any).navigate("PlaceDetails", { placeId: item.id, source: "home" })
         }
+        testID={`home-place-${item.id}`}
+        accessibilityLabel={`home-place-${item.id}`}
         onFavorite={() => {
           const { toggleSavedPlace } = require("@/services/mock/users")
           toggleSavedPlace(item.id)
@@ -111,6 +115,7 @@ export function HomeScreen() {
           style={themed($notificationButton)}
           onPress={() => navigation.navigate("Notifications" as never)}
           accessibilityLabel="notifications-button"
+          testID="notification-bell"
         >
           <Icon icon="bell" size={24} color={theme.colors.text} />
           <View style={themed($notificationBadge)} />
@@ -122,6 +127,7 @@ export function HomeScreen() {
         style={themed($searchBar)}
         onPress={() => (navigation as any).navigate("Search", { source: "home-search" })}
         accessibilityLabel="search-bar"
+        testID="search-bar"
       >
         <Icon icon="components" size={18} color={theme.colors.textDim} />
         <Text style={themed($searchPlaceholder)}>{t("home.searchPlaceholder")}</Text>

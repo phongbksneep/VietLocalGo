@@ -187,6 +187,7 @@ export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, ro
           style={$directionsButton}
           onPress={handleDirections}
           accessibilityLabel="place-directions-button"
+          testID="place-directions-button"
           LeftAccessory={() => <Icon icon="pin" size={18} color="#FFFFFF" />}
         />
       </View>

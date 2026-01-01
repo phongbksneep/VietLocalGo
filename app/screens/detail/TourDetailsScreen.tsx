@@ -236,7 +236,14 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
             /người
           </Text>
         </View>
-        <Button preset="filled" text="Đặt tour" style={$bookButton} onPress={handleBooking} />
+        <Button
+          preset="filled"
+          text="Đặt tour"
+          style={$bookButton}
+          onPress={handleBooking}
+          testID="tour-book-button"
+          accessibilityLabel="tour-book-button"
+        />
       </View>
     </Screen>
   )

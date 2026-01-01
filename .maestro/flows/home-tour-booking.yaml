@@ -1,0 +1,17 @@
+flow:
+  name: "Home -> Tour -> Book (e2e)"
+  description: "Open a tour from Home, go to booking, fill form and submit"
+  steps:
+    - wait_for: { id: "home-tour-tour-phu-day-co-le", timeout: 15000 }
+    - tap: { id: "home-tour-tour-phu-day-co-le" }
+    - wait_for: { id: "tour-book-button", timeout: 15000 }
+    - tap: { id: "tour-book-button" }
+    - wait_for: { id: "date-2025-01-15", timeout: 15000 }
+    - tap: { id: "date-2025-01-15" }
+    - wait_for: { id: "booking-name-input", timeout: 10000 }
+    - type: { id: "booking-name-input", text: "Test User" }
+    - type: { id: "booking-phone-input", text: "0912345678" }
+    - wait_for: { id: "booking-submit-button", timeout: 10000 }
+    - tap: { id: "booking-submit-button" }
+    - wait_for: { id: "booking-history-screen", timeout: 20000 }
+    - assert_element: { id: "booking-history-screen", visible: true }
