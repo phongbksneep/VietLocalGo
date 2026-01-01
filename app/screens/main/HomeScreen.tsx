@@ -2,7 +2,7 @@
  * HomeScreen - Main home tab with featured content
  * Max 200 lines per rule
  */
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
@@ -21,6 +21,7 @@ export function HomeScreen() {
   const { t } = useTranslation()
   const { themed, theme } = useAppTheme()
   const navigation = useNavigation()
+  const [_savedVersion, setSavedVersion] = useState(0)
 
   const renderSectionHeader = (title: string, onSeeAll?: () => void) => (
     <View style={$sectionHeader}>
@@ -80,6 +81,12 @@ export function HomeScreen() {
         category={item.category}
         address={item.address}
         onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
+        onFavorite={() => {
+          const { toggleSavedPlace } = require("@/services/mock/users")
+          toggleSavedPlace(item.id)
+          setSavedVersion((v: number) => v + 1)
+        }}
+        isFavorite={require("@/services/mock/users").isSavedPlace(item.id)}
         style={$cardMargin}
       />
     ),

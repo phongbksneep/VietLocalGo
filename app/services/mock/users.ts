@@ -239,3 +239,32 @@ export const getUnreadNotifications = (userId: string): Notification[] => {
 export const getUnreadCount = (userId: string): number => {
   return getUnreadNotifications(userId).length
 }
+
+// Saved places helpers
+export const isSavedPlace = (placeId: string) => {
+  return currentUser.savedPlaces.includes(placeId)
+}
+
+export const toggleSavedPlace = (placeId: string) => {
+  const idx = currentUser.savedPlaces.indexOf(placeId)
+  if (idx >= 0) {
+    currentUser.savedPlaces.splice(idx, 1)
+    return false
+  }
+  currentUser.savedPlaces.push(placeId)
+  return true
+}
+
+export const isSavedTour = (tourId: string) => {
+  return currentUser.savedTours.includes(tourId)
+}
+
+export const toggleSavedTour = (tourId: string) => {
+  const idx = currentUser.savedTours.indexOf(tourId)
+  if (idx >= 0) {
+    currentUser.savedTours.splice(idx, 1)
+    return false
+  }
+  currentUser.savedTours.push(tourId)
+  return true
+}

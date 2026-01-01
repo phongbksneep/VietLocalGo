@@ -26,6 +26,7 @@ type ProvinceDetailsScreenProps = NativeStackScreenProps<AppStackParamList, "Pro
 export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigation, route }) => {
   const { provinceId } = route.params
   const { theme } = useAppTheme()
+  const [_savedVersion, setSavedVersion] = useState(0)
 
   const [province, setProvince] = useState<Province | null>(null)
   const [provincePlaces, setProvincePlaces] = useState<Place[]>([])
@@ -69,6 +70,25 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
       onPress={() => handlePlacePress(item)}
     >
       <Image source={{ uri: item.images[0] }} style={$placeImage} />
+      <Pressable
+        style={$placeSaveButton}
+        onPress={() => {
+          const { toggleSavedPlace } = require("@/services/mock/users")
+          toggleSavedPlace(item.id)
+          setSavedVersion((v: number) => v + 1)
+        }}
+        accessibilityLabel={`save-place-${item.id}`}
+      >
+        <Icon
+          icon="heart"
+          size={18}
+          color={
+            require("@/services/mock/users").isSavedPlace(item.id)
+              ? theme.colors.palette.accent500
+              : theme.colors.text
+          }
+        />
+      </Pressable>
       <View style={$placeContent}>
         <Text preset="bold" numberOfLines={1}>
           {item.name}
@@ -325,6 +345,17 @@ const $statDivider: ViewStyle = {
 const $section: ViewStyle = {
   marginTop: spacing.lg,
   paddingHorizontal: spacing.md,
+}
+
+const $placeSaveButton: ViewStyle = {
+  position: "absolute",
+  right: 12,
+  top: 12,
+  width: 36,
+  height: 36,
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: 18,
 }
 
 const $sectionTitle: TextStyle = {

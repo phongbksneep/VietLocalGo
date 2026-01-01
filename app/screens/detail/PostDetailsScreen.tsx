@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState, useRef } from "react"
 import {
   ActivityIndicator,
   FlatList,
@@ -6,6 +6,7 @@ import {
   ImageStyle,
   Pressable,
   ScrollView,
+  Share,
   TextStyle,
   View,
   ViewStyle,
@@ -68,6 +69,8 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
     })
   }
 
+  const scrollRef = useRef<ScrollView | null>(null)
+
   const renderComment = ({ item }: { item: PostComment }) => (
     <View style={$commentItem}>
       <Image source={{ uri: item.userAvatar }} style={$commentAvatar} />
@@ -127,7 +130,11 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
         <Text preset="heading">Bài viết</Text>
-        <Pressable style={$moreButton}>
+        <Pressable
+          style={$moreButton}
+          onPress={() => Share.share({ message: `${post.userName}: ${post.content}` })}
+          accessibilityLabel="post-details-more"
+        >
           <Icon icon="more" size={24} color={theme.colors.text} />
         </Pressable>
       </View>
@@ -198,7 +205,11 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
               {likeCount}
             </Text>
           </Pressable>
-          <Pressable style={$actionButton}>
+          <Pressable
+            style={$actionButton}
+            onPress={() => scrollRef.current?.scrollToEnd({ animated: true })}
+            accessibilityLabel="post-comment-button"
+          >
             <Icon icon="components" size={22} color={theme.colors.textDim} />
             <Text style={{ color: theme.colors.textDim }}>{post.commentCount}</Text>
           </Pressable>

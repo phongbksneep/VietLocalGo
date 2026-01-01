@@ -1,5 +1,14 @@
 import { FC, useState } from "react"
-import { Image, ImageStyle, Pressable, ScrollView, TextStyle, View, ViewStyle } from "react-native"
+import {
+  Alert,
+  Image,
+  ImageStyle,
+  Pressable,
+  ScrollView,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
 import { Button } from "@/components/Button"
@@ -44,6 +53,24 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
     await new Promise((resolve) => setTimeout(resolve, 1500))
     setIsSubmitting(false)
     navigation.goBack()
+  }
+
+  const handleDeleteAccount = () => {
+    Alert.alert(
+      "Xóa tài khoản",
+      "Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.",
+      [
+        { text: "Hủy", style: "cancel" },
+        {
+          text: "Xóa",
+          style: "destructive",
+          onPress: () => {
+            // mock delete -> navigate to Login
+            navigation.navigate("Login" as never)
+          },
+        },
+      ],
+    )
   }
 
   return (
@@ -147,7 +174,11 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
           <Text preset="formLabel" style={$dangerTitle}>
             Vùng nguy hiểm
           </Text>
-          <Pressable style={[$dangerButton, { borderColor: theme.colors.error }]}>
+          <Pressable
+            style={[$dangerButton, { borderColor: theme.colors.error }]}
+            onPress={handleDeleteAccount}
+            accessibilityLabel="delete-account-button"
+          >
             <Icon icon="x" size={18} color={theme.colors.error} />
             <Text style={{ color: theme.colors.error }}>Xóa tài khoản</Text>
           </Pressable>

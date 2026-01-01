@@ -73,6 +73,11 @@ export function ExploreScreen() {
         category={item.category}
         address={item.address}
         onPress={() => (navigation as any).navigate("PlaceDetails", { placeId: item.id })}
+        onFavorite={() => {
+          const { toggleSavedPlace } = require("@/services/mock/users")
+          toggleSavedPlace(item.id)
+        }}
+        isFavorite={require("@/services/mock/users").isSavedPlace(item.id)}
         style={$placeCard}
       />
     ),

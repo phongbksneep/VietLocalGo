@@ -3,7 +3,7 @@
  * Max 200 lines per rule
  */
 import { useCallback, useState } from "react"
-import { FlatList, Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { FlatList, Pressable, Share, TextStyle, View, ViewStyle } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 
@@ -43,7 +43,11 @@ export function ForumScreen() {
         isLiked={item.isLiked}
         style={$postCard}
         onPress={() => (navigation as any).navigate("PostDetails", { postId: item.id })}
-        onShare={() => {}}
+        onShare={() => {
+          const message = `${item.userName}: ${item.content}`
+          Share.share({ message })
+        }}
+        onMore={() => (navigation as any).navigate("PostDetails", { postId: item.id })}
       />
     ),
     [navigation],

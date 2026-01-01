@@ -35,6 +35,7 @@ export interface PostCardProps {
   onLike?: () => void
   onComment?: () => void
   onShare?: () => void
+  onMore?: () => void
   style?: StyleProp<ViewStyle>
 }
 
@@ -52,6 +53,7 @@ export const PostCard = memo(function PostCard(props: PostCardProps) {
     onLike,
     onComment,
     onShare,
+    onMore,
     style,
   } = props
   const { t } = useTranslation()
@@ -72,7 +74,7 @@ export const PostCard = memo(function PostCard(props: PostCardProps) {
           <Text style={themed($userName)}>{userName}</Text>
           <Text style={themed($date)}>{date}</Text>
         </View>
-        <Pressable style={$moreButton}>
+        <Pressable style={$moreButton} onPress={onMore} accessibilityLabel="post-more-button">
           <Icon icon="more" size={20} color={theme.colors.textDim} />
         </Pressable>
       </View>
