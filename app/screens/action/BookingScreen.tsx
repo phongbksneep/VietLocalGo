@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -26,6 +27,7 @@ type BookingScreenProps = NativeStackScreenProps<AppStackParamList, "Booking">
 export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => {
   const { tourId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [tour, setTour] = useState<Tour | null>(null)
   const [loading, setLoading] = useState(true)
@@ -76,7 +78,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy tour</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("tour.notFound")}</Text>
         </View>
       </Screen>
     )
@@ -94,7 +96,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Đặt tour</Text>
+        <Text preset="heading">{t("tour.booking.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -122,7 +124,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         {/* Date Selection */}
         <View style={$section}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Chọn ngày khởi hành
+            {t("tour.booking.selectDate")}
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={$datesContainer}>
@@ -159,7 +161,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         {/* People */}
         <View style={$section}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Số người
+            {t("tour.booking.guests")}
           </Text>
           <View style={$peopleSelector}>
             <Pressable
@@ -198,11 +200,11 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         {/* Contact Info */}
         <View style={$section}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Thông tin liên hệ
+            {t("tour.booking.contactInfo")}
           </Text>
           <TextField
-            label="Họ và tên"
-            placeholder="Nhập họ và tên"
+            label={t("tour.booking.name")}
+            placeholder={t("tour.booking.name")}
             value={name}
             onChangeText={setName}
             containerStyle={$textField}
@@ -210,8 +212,8 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
             accessibilityLabel="booking-name"
           />
           <TextField
-            label="Số điện thoại"
-            placeholder="Nhập số điện thoại"
+            label={t("tour.booking.phone")}
+            placeholder={t("tour.booking.phone")}
             value={phone}
             onChangeText={setPhone}
             keyboardType="phone-pad"
@@ -224,7 +226,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         {/* Price Summary */}
         <View style={[$summaryCard, { backgroundColor: theme.colors.palette.primary100 }]}>
           <Text preset="formLabel" style={$summaryTitle}>
-            Tổng thanh toán
+            {t("tour.booking.summary")}
           </Text>
           <View style={$summaryRow}>
             <Text style={{ color: theme.colors.text }}>
@@ -246,7 +248,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
       >
         <View style={$totalContainer}>
           <Text size="xs" style={{ color: theme.colors.textDim }}>
-            Tổng cộng
+            {t("tour.booking.total")}
           </Text>
           <Text preset="bold" style={[$totalPrice, { color: theme.colors.tint }]}>
             {totalPrice.toLocaleString("vi-VN")}đ
@@ -254,7 +256,7 @@ export const BookingScreen: FC<BookingScreenProps> = ({ navigation, route }) => 
         </View>
         <Button
           preset="filled"
-          text={isSubmitting ? "Đang xử lý..." : "Xác nhận đặt"}
+          text={isSubmitting ? t("common.loading") : t("tour.booking.confirmBooking")}
           style={$submitButton}
           onPress={handleSubmit}
           testID="booking-submit-button"

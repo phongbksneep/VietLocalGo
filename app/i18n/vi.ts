@@ -648,6 +648,7 @@ const vi = {
     title: "Gợi ý cho bạn",
     basedOnPreferences: "Dựa trên sở thích của bạn",
     matchPercentage: "Phù hợp {{percentage}}%",
+    found: "{{count}} tour phù hợp",
     refresh: "Làm mới gợi ý",
   },
 

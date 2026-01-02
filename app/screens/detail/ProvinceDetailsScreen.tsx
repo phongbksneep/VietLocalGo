@@ -12,6 +12,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -26,6 +27,7 @@ type ProvinceDetailsScreenProps = NativeStackScreenProps<AppStackParamList, "Pro
 export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigation, route }) => {
   const { provinceId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
   const [_savedVersion, setSavedVersion] = useState(0)
 
   const [province, setProvince] = useState<Province | null>(null)
@@ -149,7 +151,7 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy tỉnh</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("province.notFound")}</Text>
         </View>
       </Screen>
     )
@@ -212,9 +214,9 @@ export const ProvinceDetailsScreen: FC<ProvinceDetailsScreenProps> = ({ navigati
         {provincePlaces.length > 0 && (
           <View style={$section}>
             <View style={$sectionHeader}>
-              <Text preset="subheading">Địa điểm nổi bật</Text>
+              <Text preset="subheading">{t("home.sections.featuredProvinces")}</Text>
               <Pressable onPress={handleViewAllPlaces}>
-                <Text style={{ color: theme.colors.tint }}>Xem tất cả</Text>
+                <Text style={{ color: theme.colors.tint }}>{t("home.seeAll")}</Text>
               </Pressable>
             </View>
             <FlatList

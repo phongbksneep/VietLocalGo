@@ -13,6 +13,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -28,6 +29,7 @@ type PlaceDetailsScreenProps = NativeStackScreenProps<AppStackParamList, "PlaceD
 export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, route }) => {
   const { placeId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [place, setPlace] = useState<Place | null>(null)
   const [loading, setLoading] = useState(true)
@@ -86,7 +88,7 @@ export const PlaceDetailsScreen: FC<PlaceDetailsScreenProps> = ({ navigation, ro
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy địa điểm</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("place.details.notFound")}</Text>
         </View>
       </Screen>
     )

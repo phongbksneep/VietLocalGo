@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -32,17 +33,31 @@ type SearchResult = {
   rating: number
 }
 
-const filterTypes: { id: SearchResultType | "all"; label: string }[] = [
-  { id: "all", label: "Tất cả" },
-  { id: "place", label: "Địa điểm" },
-  { id: "tour", label: "Tour" },
-  { id: "guide", label: "HDV" },
+const filterTypes: { id: SearchResultType | "all" }[] = [
+  { id: "all" },
+  { id: "place" },
+  { id: "tour" },
+  { id: "guide" },
 ]
 
 const recentSearches = ["Phủ Dầy", "Tour ẩm thực", "Chùa Cổ Lễ", "Làng nghề"]
 
 export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
+
+  const getFilterLabel = (id: SearchResultType | "all") => {
+    switch (id) {
+      case "all":
+        return t("explore.categories.all")
+      case "place":
+        return t("explore.categories.place")
+      case "tour":
+        return t("explore.categories.tour")
+      case "guide":
+        return t("explore.categories.guides")
+    }
+  }
 
   const [query, setQuery] = useState("")
   const [activeFilter, setActiveFilter] = useState<SearchResultType | "all">("all")
@@ -229,7 +244,7 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
         <TextField
           containerStyle={$searchFieldContainer}
           inputWrapperStyle={$searchFieldWrapper}
-          placeholder="Tìm kiếm địa điểm, tour, HDV..."
+          placeholder={t("search.placeholder")}
           testID="search-input"
           accessibilityLabel="search-input"
           value={query}
@@ -267,7 +282,7 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
               onPress={() => handleFilterChange(filter.id)}
             >
               <Text size="xs" style={isActive ? $filterTextActive : $filterTextDefault(theme)}>
-                {filter.label}
+                {getFilterLabel(filter.id)}
               </Text>
             </Pressable>
           )
@@ -279,7 +294,7 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
         // Recent searches
         <View style={$recentContainer}>
           <Text preset="formLabel" style={$recentTitle}>
-            Tìm kiếm gần đây
+            {t("search.recent")}
           </Text>
           {recentSearches.map((search, index) => (
             <Pressable key={index} style={$recentItem} onPress={() => handleRecentSearch(search)}>
@@ -302,16 +317,16 @@ export const SearchScreen: FC<SearchScreenProps> = ({ navigation, route }) => {
           ListHeaderComponent={
             results.length > 0 ? (
               <Text size="xs" style={{ color: theme.colors.textDim, marginBottom: spacing.sm }}>
-                {results.length} kết quả
+                {t("explore.results", { count: results.length })}
               </Text>
             ) : null
           }
           ListEmptyComponent={
             <View style={$emptyContainer}>
               <Icon icon="components" size={64} color={theme.colors.border} />
-              <Text style={{ color: theme.colors.textDim }}>Không tìm thấy kết quả</Text>
+              <Text style={{ color: theme.colors.textDim }}>{t("common.noResults")}</Text>
               <Text size="xs" style={[$emptySubtext, { color: theme.colors.textDim }]}>
-                Thử tìm kiếm với từ khóa khác
+                {t("search.tryAgain")}
               </Text>
             </View>
           }

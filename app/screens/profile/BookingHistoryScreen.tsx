@@ -254,7 +254,7 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
           ListEmptyComponent={
             <View style={$emptyContainer}>
               <Icon icon="components" size={64} color={theme.colors.border} />
-              <Text style={{ color: theme.colors.textDim }}>Không có đặt tour nào</Text>
+              <Text style={{ color: theme.colors.textDim }}>{t("bookingHistory.empty.title")}</Text>
             </View>
           }
         />

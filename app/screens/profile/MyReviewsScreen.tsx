@@ -240,7 +240,7 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Đánh giá của tôi</Text>
+        <Text preset="heading">{t("myReviewsScreen.title")}</Text>
         <View style={$spacer} />
       </View>
 

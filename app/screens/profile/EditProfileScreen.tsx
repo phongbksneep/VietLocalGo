@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -24,6 +25,7 @@ type EditProfileScreenProps = NativeStackScreenProps<AppStackParamList, "EditPro
 
 export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [avatar, setAvatar] = useState("https://i.pravatar.cc/300?u=currentuser")
   const [fullName, setFullName] = useState("Nguyễn Văn A")
@@ -56,21 +58,17 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
   }
 
   const handleDeleteAccount = () => {
-    Alert.alert(
-      "Xóa tài khoản",
-      "Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.",
-      [
-        { text: "Hủy", style: "cancel" },
-        {
-          text: "Xóa",
-          style: "destructive",
-          onPress: () => {
-            // mock delete -> navigate to Login
-            navigation.navigate("Login" as never)
-          },
+    Alert.alert(t("editProfile.deleteTitle"), t("editProfile.deleteConfirm"), [
+      { text: t("common.cancel"), style: "cancel" },
+      {
+        text: t("common.delete"),
+        style: "destructive",
+        onPress: () => {
+          // mock delete -> navigate to Login
+          navigation.navigate("Login" as never)
         },
-      ],
-    )
+      },
+    ])
   }
 
   return (
@@ -85,7 +83,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Chỉnh sửa hồ sơ</Text>
+        <Text preset="heading">{t("editProfile.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -106,15 +104,15 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
             </Pressable>
           </View>
           <Pressable onPress={handleChangeAvatar}>
-            <Text style={{ color: theme.colors.tint }}>Thay đổi ảnh đại diện</Text>
+            <Text style={{ color: theme.colors.tint }}>{t("editProfile.changeAvatar")}</Text>
           </Pressable>
         </View>
 
         {/* Form Fields */}
         <View style={$formSection}>
           <TextField
-            label="Họ và tên"
-            placeholder="Nhập họ và tên"
+            label={t("editProfile.fields.fullName")}
+            placeholder={t("editProfile.placeholders.fullName")}
             value={fullName}
             onChangeText={setFullName}
             containerStyle={$textFieldContainer}

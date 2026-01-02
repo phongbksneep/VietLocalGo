@@ -264,6 +264,8 @@ const appEn = {
       shares: "{{count}} shares",
       readMore: "Read more",
       viewAllComments: "View all {{count}} comments",
+      detailsTitle: "Post",
+      notFound: "Post not found",
     },
     createPostScreen: {
       title: "Create Post",
@@ -280,7 +282,13 @@ const appEn = {
       title: "No posts yet",
       subtitle: "Be the first to share your experience!",
     },
+    detailsTitle: "Post",
+    notFound: "Post not found",
     share: "Share",
+  },
+  demoShowroom: {
+    removedTitle: "Demo screens removed",
+    removedBody: "These screens were internal demos and have been removed.",
   },
 
   // Profile Screen
@@ -302,6 +310,7 @@ const appEn = {
           title: "No reviews yet",
           subtitle: "Share your experience with the community",
         },
+        title: "My Reviews",
         avgRating: "Avg rating",
         helpful: "Helpful",
       },
@@ -338,6 +347,7 @@ const appEn = {
       duration: "Duration",
       groupSize: "Group Size",
       people: "{{min}}-{{max}} people",
+      notFound: "Tour not found",
       price: "Price",
       perPerson: "/person",
       rating: "{{rating}} ({{count}} reviews)",
@@ -392,6 +402,7 @@ const appEn = {
       directions: "Directions",
       writeReview: "Write Review",
       seeAllReviews: "See all reviews",
+      notFound: "Place not found",
     },
   },
 
@@ -422,6 +433,7 @@ const appEn = {
       chat: "Chat",
       bookGuide: "Book Guide",
       responseTime: "Usually responds within {{time}}",
+      notFound: "Guide not found",
     },
   },
 
@@ -534,6 +546,7 @@ const appEn = {
     },
     noResults: "No results found for '{{query}}'",
     tryAgain: "Try a different search term",
+    empty: "No results",
   },
 
   // Booking History
@@ -573,6 +586,7 @@ const appEn = {
   province: {
     places: "{{count}} places",
     tours: "{{count}} tours",
+    notFound: "Province not found",
   },
 
   // Image Gallery
@@ -652,7 +666,9 @@ const appEn = {
     title: "Recommendations",
     basedOnPreferences: "Based on your preferences",
     matchPercentage: "{{percentage}}% match",
+    found: "{{count}} tours found",
     refresh: "Refresh recommendations",
+    noSuitableTours: "No suitable tours found",
   },
 
   // Time & Date

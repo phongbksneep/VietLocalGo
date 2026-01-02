@@ -11,6 +11,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -26,6 +27,7 @@ type TourDetailsScreenProps = NativeStackScreenProps<AppStackParamList, "TourDet
 export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, route }) => {
   const { tourId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [tour, setTour] = useState<Tour | null>(null)
   const [guide, setGuide] = useState<Guide | null>(null)
@@ -71,7 +73,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy tour</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("tour.notFound")}</Text>
         </View>
       </Screen>
     )
@@ -85,7 +87,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
         <Text preset="heading" numberOfLines={1} style={$headerTitle}>
-          Chi tiết tour
+          {t("tour.details.title")}
         </Text>
         <Pressable
           style={$headerAction}
@@ -154,7 +156,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
               <View style={$guideRating}>
                 <Icon icon="heart" size={12} color={theme.colors.palette.accent500} />
                 <Text size="xs" style={{ color: theme.colors.text }}>
-                  {guide.rating} • {guide.totalTours} tours
+                  {guide.rating} • {guide.totalTours} {t("guide.profile.tours")}
                 </Text>
               </View>
             </View>
@@ -165,7 +167,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
         {/* Description */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Mô tả
+            {t("tour.details.overview")}
           </Text>
           <Text style={{ color: theme.colors.text }}>{tour.description}</Text>
         </View>
@@ -173,7 +175,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
         {/* Itinerary */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Lịch trình
+            {t("tour.details.itinerary")}
           </Text>
           <FlatList
             data={tour.itinerary}
@@ -203,7 +205,7 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
         {/* Includes */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="formLabel" style={$sectionTitle}>
-            Bao gồm
+            {t("tour.details.includes")}
           </Text>
           {tour.includes.map((item, index) => (
             <View key={index} style={$includeItem}>
@@ -233,12 +235,12 @@ export const TourDetailsScreen: FC<TourDetailsScreenProps> = ({ navigation, rout
             {tour.price.toLocaleString("vi-VN")}đ
           </Text>
           <Text size="xs" style={{ color: theme.colors.textDim }}>
-            /người
+            {t("tour.perPerson")}
           </Text>
         </View>
         <Button
           preset="filled"
-          text="Đặt tour"
+          text={t("tour.details.bookTour")}
           style={$bookButton}
           onPress={handleBooking}
           testID="tour-book-button"

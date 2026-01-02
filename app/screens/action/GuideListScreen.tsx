@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -24,6 +25,7 @@ type GuideListScreenProps = NativeStackScreenProps<AppStackParamList, "GuideList
 
 export const GuideListScreen: FC<GuideListScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [guides, setGuides] = useState<Guide[]>([])
   const [filteredGuides, setFilteredGuides] = useState<Guide[]>([])
@@ -152,7 +154,7 @@ export const GuideListScreen: FC<GuideListScreenProps> = ({ navigation }) => {
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Hướng dẫn viên</Text>
+        <Text preset="heading">{t("guide.list.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -161,7 +163,7 @@ export const GuideListScreen: FC<GuideListScreenProps> = ({ navigation }) => {
         <TextField
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholder="Tìm kiếm hướng dẫn viên..."
+          placeholder={t("search.placeholder")}
           LeftAccessory={() => (
             <View style={$searchIcon}>
               <Icon icon="community" size={20} color={theme.colors.textDim} />
@@ -176,7 +178,9 @@ export const GuideListScreen: FC<GuideListScreenProps> = ({ navigation }) => {
 
       {/* Results count */}
       <View style={$resultsHeader}>
-        <Text style={{ color: theme.colors.textDim }}>{filteredGuides.length} hướng dẫn viên</Text>
+        <Text style={{ color: theme.colors.textDim }}>
+          {t("explore.results", { count: filteredGuides.length })}
+        </Text>
       </View>
 
       {loading ? (
@@ -194,7 +198,7 @@ export const GuideListScreen: FC<GuideListScreenProps> = ({ navigation }) => {
             <View style={$emptyContainer}>
               <Icon icon="community" size={64} color={theme.colors.border} />
               <Text style={{ color: theme.colors.textDim, marginTop: spacing.md }}>
-                Không tìm thấy hướng dẫn viên
+                {t("guide.profile.notFound")}
               </Text>
             </View>
           }

@@ -144,7 +144,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy bài viết</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("post.notFound")}</Text>
         </View>
       </Screen>
     )
@@ -157,7 +157,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Bài viết</Text>
+        <Text preset="heading">{t("post.detailsTitle")}</Text>
         <Pressable
           style={$moreButton}
           onPress={() => Share.share({ message: `${post.userName}: ${post.content}` })}

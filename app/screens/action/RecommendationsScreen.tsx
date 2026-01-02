@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -31,6 +32,7 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
 
   const [recommendations, setRecommendations] = useState<RecommendedTour[]>([])
   const [loading, setLoading] = useState(true)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fetchRecommendations = () => {
@@ -67,7 +69,9 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
 
       {/* Match Badge */}
       <View style={[$matchBadge, { backgroundColor: theme.colors.palette.secondary500 }]}>
-        <Text style={$matchText}>{item.matchPercentage}% phù hợp</Text>
+        <Text style={$matchText}>
+          {t("recommendations.matchPercentage", { percentage: item.matchPercentage })}
+        </Text>
       </View>
 
       <View style={$tourContent}>
@@ -92,7 +96,7 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
           <Text preset="bold" style={[$priceText, { color: theme.colors.tint }]}>
             {item.price.toLocaleString("vi-VN")}đ
           </Text>
-          <Text style={[$priceUnit, { color: theme.colors.textDim }]}>/người</Text>
+          <Text style={[$priceUnit, { color: theme.colors.textDim }]}>{t("tour.perPerson")}</Text>
         </View>
       </View>
     </Pressable>
@@ -103,9 +107,7 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <ActivityIndicator size="large" color={theme.colors.tint} />
-          <Text style={[$loadingText, { color: theme.colors.textDim }]}>
-            Đang phân tích sở thích...
-          </Text>
+          <Text style={[$loadingText, { color: theme.colors.textDim }]}>{t("common.loading")}</Text>
         </View>
       </Screen>
     )
@@ -118,7 +120,7 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Gợi ý cho bạn</Text>
+        <Text preset="heading">{t("recommendations.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -127,8 +129,10 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
         <View style={[$introCard, { backgroundColor: theme.colors.palette.primary100 }]}>
           <Icon icon="heart" size={24} color={theme.colors.tint} />
           <Text style={$introText}>
-            Dựa trên sở thích của bạn, chúng tôi đã tìm được{" "}
-            <Text preset="bold">{recommendations.length} tour</Text> phù hợp!
+            {t("recommendations.basedOnPreferences")}{" "}
+            <Text preset="bold">
+              {t("recommendations.found", { count: recommendations.length })}
+            </Text>
           </Text>
         </View>
       </View>
@@ -143,7 +147,7 @@ export const RecommendationsScreen: FC<RecommendationsScreenProps> = ({ navigati
           <View style={$emptyContainer}>
             <Icon icon="components" size={64} color={theme.colors.border} />
             <Text style={[$emptyText, { color: theme.colors.textDim }]}>
-              Không tìm thấy tour phù hợp
+              {t("recommendations.noSuitableTours")}
             </Text>
           </View>
         }

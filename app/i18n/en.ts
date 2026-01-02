@@ -77,6 +77,8 @@ const en = {
     lorem2Sentences:
       "Nulla cupidatat deserunt amet quis aliquip nostrud do adipisicing. Adipisicing excepteur elit laborum Lorem adipisicing do duis.",
     demoHeaderTxExample: "Yay",
+    removedTitle: "Demo screens removed",
+    removedBody: "These screens were internal demos and have been removed.",
     demoViaTxProp: "Via `tx` Prop",
     demoViaSpecifiedTxProp: "Via `{{prop}}Tx` Prop",
   },

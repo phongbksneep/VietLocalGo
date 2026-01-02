@@ -11,6 +11,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -26,6 +27,7 @@ type GuideProfileScreenProps = NativeStackScreenProps<AppStackParamList, "GuideP
 export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, route }) => {
   const { guideId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [guide, setGuide] = useState<Guide | null>(null)
   const [loading, setLoading] = useState(true)
@@ -100,7 +102,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
       <Screen preset="fixed" safeAreaEdges={["top"]}>
         <View style={$loadingContainer}>
           <Icon icon="components" size={64} color={theme.colors.border} />
-          <Text style={{ color: theme.colors.textDim }}>Không tìm thấy hướng dẫn viên</Text>
+          <Text style={{ color: theme.colors.textDim }}>{t("guide.profile.notFound")}</Text>
         </View>
       </Screen>
     )
@@ -137,7 +139,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Hướng dẫn viên</Text>
+        <Text preset="heading">{t("guide.list.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -169,7 +171,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
                 {guide.rating}
               </Text>
               <Text size="xs" style={{ color: theme.colors.textDim }}>
-                Đánh giá
+                {t("guide.list.filters.rating")}
               </Text>
             </View>
             <View style={[$statDivider, { backgroundColor: theme.colors.border }]} />
@@ -178,7 +180,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
                 {guide.reviewCount}
               </Text>
               <Text size="xs" style={{ color: theme.colors.textDim }}>
-                Nhận xét
+                {t("profile.stats.reviews")}
               </Text>
             </View>
             <View style={[$statDivider, { backgroundColor: theme.colors.border }]} />
@@ -187,7 +189,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
                 {guide.totalTours}
               </Text>
               <Text size="xs" style={{ color: theme.colors.textDim }}>
-                Tours
+                {t("guide.profile.tours")}
               </Text>
             </View>
             <View style={[$statDivider, { backgroundColor: theme.colors.border }]} />
@@ -196,7 +198,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
                 {guide.experience} năm
               </Text>
               <Text size="xs" style={{ color: theme.colors.textDim }}>
-                Kinh nghiệm
+                {t("guide.list.filters.experience")}
               </Text>
             </View>
           </View>
@@ -205,7 +207,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         {/* Bio */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="subheading" style={$sectionTitle}>
-            Giới thiệu
+            {t("guide.profile.about")}
           </Text>
           <Text style={$bioText(theme)}>{guide.bio}</Text>
         </View>
@@ -213,7 +215,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         {/* Specialties */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="subheading" style={$sectionTitle}>
-            Chuyên môn
+            {t("guide.profile.specialties")}
           </Text>
           <View style={$tagsContainer}>
             {guide.specialties.map((specialty, index) => (
@@ -230,7 +232,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         {/* Languages */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="subheading" style={$sectionTitle}>
-            Ngôn ngữ
+            {t("guide.profile.languages")}
           </Text>
           <View style={$tagsContainer}>
             {guide.languages.map((language, index) => (
@@ -257,7 +259,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         {/* Reviews */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <Text preset="subheading" style={$sectionTitle}>
-            Đánh giá gần đây
+            {t("guide.profile.reviews")}
           </Text>
           <FlatList
             data={mockReviews}
@@ -271,7 +273,7 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
         {/* Pricing */}
         <View style={[$section, { backgroundColor: theme.colors.background }]}>
           <View style={$priceRow}>
-            <Text preset="subheading">Giá thuê</Text>
+            <Text preset="subheading">{t("guide.profile.hourlyRate")}</Text>
             <View style={$priceValue}>
               <Text preset="bold" style={$priceAmount(theme)}>
                 {guide.hourlyRate.toLocaleString("vi-VN")}đ
@@ -293,12 +295,19 @@ export const GuideProfileScreen: FC<GuideProfileScreenProps> = ({ navigation, ro
       >
         <Button
           preset="default"
-          text="Nhắn tin"
+          text={t("guide.profile.chat")}
+          testID="guide-chat-button"
           LeftAccessory={() => <Icon icon="components" size={18} color={theme.colors.tint} />}
           style={$chatButton}
           onPress={handleChat}
         />
-        <Button preset="filled" text="Đặt tour" style={$bookButton} onPress={handleBookTour} />
+        <Button
+          preset="filled"
+          text={t("guide.profile.bookGuide")}
+          testID="guide-book-button"
+          style={$bookButton}
+          onPress={handleBookTour}
+        />
       </View>
     </Screen>
   )
