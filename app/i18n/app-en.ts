@@ -277,6 +277,25 @@ const appEn = {
       friends: "Friends",
       private: "Private",
       post: "Post",
+      categoryLabel: "Category",
+      categories: {
+        question: "Question",
+        review: "Review",
+        share: "Share",
+        tips: "Tips",
+      },
+      titleLabel: "Title",
+      titlePlaceholder: "Enter post title (min 10 characters)",
+      contentLabel: "Content",
+      contentPlaceholder: "Share your experience... (min 20 characters)",
+      imagesLabel: "Images",
+      addImage: "Add image",
+      maxImages: "Up to 5 images",
+      guidelines: {
+        title: "Posting guidelines",
+        content:
+          "• Content must be related to travel\n• No spam or advertising\n• Respect the community",
+      },
     },
     empty: {
       title: "No posts yet",
@@ -313,6 +332,13 @@ const appEn = {
         title: "My Reviews",
         avgRating: "Avg rating",
         helpful: "Helpful",
+        reviewsLabel: "Reviews",
+        helpfulCount: "{{count}} people found this helpful",
+        type: {
+          place: "Place",
+          tour: "Tour",
+          guide: "Guide",
+        },
       },
       notifications: "Notifications",
       privacy: "Privacy",
@@ -330,6 +356,33 @@ const appEn = {
     account: "Account",
     settings: "Settings",
     support: "Support",
+  },
+  editProfile: {
+    title: "Edit Profile",
+    changeAvatar: "Change avatar",
+    fields: {
+      fullName: "Full name",
+      email: "Email",
+      phone: "Phone number",
+      bio: "Bio",
+    },
+    placeholders: {
+      fullName: "Enter your full name",
+      email: "Enter email",
+      phone: "Enter phone number",
+      bio: "Write a short bio...",
+    },
+    deleteTitle: "Delete account?",
+    deleteConfirm: "Are you sure you want to delete your account? This action cannot be undone.",
+    info: {
+      joinDate: "Join date",
+      posts: "Posts",
+      reviews: "Reviews",
+    },
+    dangerTitle: "Danger zone",
+    deleteAccount: "Delete account",
+    save: "Save changes",
+    saving: "Saving...",
   },
 
   // Tour Screens
@@ -444,6 +497,9 @@ const appEn = {
     send: "Send",
     online: "Online",
     offline: "Offline",
+    empty: {
+      title: "Start a conversation",
+    },
     typing: "Typing...",
     today: "Today",
     yesterday: "Yesterday",

@@ -100,11 +100,11 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
   const getTypeLabel = (type: MyReview["targetType"]) => {
     switch (type) {
       case "place":
-        return "Địa điểm"
+        return t("myReviewsScreen.type.place")
       case "tour":
-        return "Tour"
+        return t("myReviewsScreen.type.tour")
       case "guide":
-        return "Hướng dẫn viên"
+        return t("myReviewsScreen.type.guide")
     }
   }
 
@@ -218,7 +218,7 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
         <View style={$helpfulContainer}>
           <Icon icon="heart" size={14} color={theme.colors.textDim} />
           <Text size="xs" style={{ color: theme.colors.textDim }}>
-            {item.helpful} người thấy hữu ích
+            {t("myReviewsScreen.helpfulCount", { count: item.helpful })}
           </Text>
         </View>
         <View style={$actionButtons}>
@@ -252,7 +252,7 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
               {reviews.length}
             </Text>
             <Text size="xs" style={{ color: theme.colors.textDim }}>
-              đánh giá
+              {t("myReviewsScreen.reviewsLabel")}
             </Text>
           </View>
           <View style={[$statDivider, { backgroundColor: theme.colors.border }]} />

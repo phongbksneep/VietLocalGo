@@ -1,6 +1,7 @@
 import { FC, useState } from "react"
 import { Image, ImageStyle, Pressable, ScrollView, TextStyle, View, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -22,6 +23,7 @@ const categories = [
 
 export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -61,7 +63,7 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
   return (
     <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$container}>
       {/* Header */}
-      <View
+        <View
         style={[
           $header,
           { backgroundColor: theme.colors.background, borderBottomColor: theme.colors.border },
@@ -70,7 +72,7 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="x" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Tạo bài viết</Text>
+        <Text preset="heading">{t("forum.createPostScreen.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -82,7 +84,7 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
         {/* Category Selection */}
         <View style={$section}>
           <Text preset="formLabel" style={$sectionLabel}>
-            Danh mục
+            {t("forum.createPostScreen.categoryLabel")}
           </Text>
           <View style={$categoryGrid}>
             {categories.map((category) => (
@@ -108,12 +110,8 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
                     selectedCategory === category.id ? theme.colors.tint : theme.colors.textDim
                   }
                 />
-                <Text
-                  style={{
-                    color: selectedCategory === category.id ? theme.colors.tint : theme.colors.text,
-                  }}
-                >
-                  {category.label}
+                <Text style={{ color: selectedCategory === category.id ? theme.colors.tint : theme.colors.text }}>
+                  {t(`forum.createPostScreen.categories.${category.id}`)}
                 </Text>
               </Pressable>
             ))}
@@ -123,8 +121,8 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
         {/* Title */}
         <View style={$section}>
           <TextField
-            label="Tiêu đề"
-            placeholder="Nhập tiêu đề bài viết (tối thiểu 10 ký tự)"
+            label={t("forum.createPostScreen.titleLabel")}
+            placeholder={t("forum.createPostScreen.titlePlaceholder")}
             value={title}
             onChangeText={setTitle}
             containerStyle={$textFieldContainer}
@@ -142,8 +140,8 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
         {/* Content */}
         <View style={$section}>
           <TextField
-            label="Nội dung"
-            placeholder="Chia sẻ trải nghiệm của bạn... (tối thiểu 20 ký tự)"
+            label={t("forum.createPostScreen.contentLabel")}
+            placeholder={t("forum.createPostScreen.contentPlaceholder")}
             value={content}
             onChangeText={setContent}
             multiline
@@ -164,7 +162,7 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
         {/* Images */}
         <View style={$section}>
           <Text preset="formLabel" style={$sectionLabel}>
-            Hình ảnh
+            {t("forum.createPostScreen.imagesLabel")}
           </Text>
           <View style={$imagesGrid}>
             {images.map((image, index) => (
@@ -185,13 +183,13 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
               >
                 <Icon icon="components" size={24} color={theme.colors.textDim} />
                 <Text size="xs" style={{ color: theme.colors.textDim }}>
-                  Thêm ảnh
+                  {t("forum.createPostScreen.addImage")}
                 </Text>
               </Pressable>
             )}
           </View>
           <Text size="xs" style={{ color: theme.colors.textDim }}>
-            Tối đa 5 ảnh
+            {t("forum.createPostScreen.maxImages")}
           </Text>
         </View>
 
@@ -200,11 +198,10 @@ export const CreatePostScreen: FC<CreatePostScreenProps> = ({ navigation }) => {
           <Icon icon="check" size={20} color={theme.colors.palette.secondary500} />
           <View style={$guidelinesContent}>
             <Text preset="bold" style={{ color: theme.colors.palette.secondary500 }}>
-              Lưu ý khi đăng bài
+              {t("forum.createPostScreen.guidelines.title")}
             </Text>
             <Text size="xs" style={{ color: theme.colors.palette.secondary500 }}>
-              • Nội dung phải liên quan đến du lịch{"\n"}• Không spam hoặc quảng cáo{"\n"}• Tôn
-              trọng cộng đồng
+              {t("forum.createPostScreen.guidelines.content")}
             </Text>
           </View>
         </View>

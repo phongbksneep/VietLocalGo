@@ -11,6 +11,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -34,6 +35,7 @@ interface Message {
 export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
   const { recipientId, recipientName } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
   const flatListRef = useRef<FlatList>(null)
 
   const [messages, setMessages] = useState<Message[]>([
@@ -167,7 +169,7 @@ export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
               size="xs"
               style={{ color: isOnline ? theme.colors.palette.primary500 : theme.colors.textDim }}
             >
-              {isOnline ? "Đang hoạt động" : "Ngoại tuyến"}
+              {isOnline ? t("chat.online") : t("chat.offline")}
             </Text>
           </View>
         </Pressable>
@@ -196,7 +198,7 @@ export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
           ListEmptyComponent={
             <View style={$emptyContainer}>
               <Icon icon="components" size={48} color={theme.colors.border} />
-              <Text style={{ color: theme.colors.textDim }}>Bắt đầu cuộc trò chuyện</Text>
+              <Text style={{ color: theme.colors.textDim }}>{t("chat.empty.title")}</Text>
             </View>
           }
         />
@@ -212,7 +214,7 @@ export const ChatScreen: FC<ChatScreenProps> = ({ navigation, route }) => {
             containerStyle={$textFieldContainer}
             inputWrapperStyle={$textFieldWrapper}
             style={$textInput}
-            placeholder="Nhập tin nhắn..."
+            placeholder={t("chat.inputPlaceholder")}
             value={inputText}
             onChangeText={setInputText}
             onSubmitEditing={handleSend}

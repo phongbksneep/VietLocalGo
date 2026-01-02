@@ -1,6 +1,7 @@
 import { FC, useState } from "react"
 import { Pressable, TextStyle, View, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/Button"
 import { Icon } from "@/components/Icon"
@@ -15,6 +16,7 @@ type ForgotPasswordScreenProps = NativeStackScreenProps<AppStackParamList, "Forg
 
 export const ForgotPasswordScreen: FC<ForgotPasswordScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [phone, setPhone] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -43,15 +45,15 @@ export const ForgotPasswordScreen: FC<ForgotPasswordScreenProps> = ({ navigation
       {/* Content */}
       <View style={$content}>
         <Text preset="heading" style={$title}>
-          Quên mật khẩu
+          {t("auth.forgotPassword.title")}
         </Text>
         <Text style={[$subtitle, { color: theme.colors.textDim }]}>
-          Nhập số điện thoại đã đăng ký để nhận mã xác minh
+          {t("auth.forgotPassword.subtitle")}
         </Text>
 
         <TextField
-          label="Số điện thoại"
-          placeholder="Nhập số điện thoại"
+          label={t("auth.login.phoneLabel")}
+          placeholder={t("auth.login.phonePlaceholder")}
           value={phone}
           onChangeText={setPhone}
           keyboardType="phone-pad"
@@ -60,14 +62,14 @@ export const ForgotPasswordScreen: FC<ForgotPasswordScreenProps> = ({ navigation
 
         <Button
           preset="filled"
-          text={isSubmitting ? "Đang gửi..." : "Gửi mã xác minh"}
+          text={isSubmitting ? t("common.loading") : t("auth.forgotPassword.sendCode")}
           style={$submitButton}
           onPress={handleSubmit}
           disabled={!isValid || isSubmitting}
         />
 
         <Pressable style={$backToLogin} onPress={() => navigation.navigate("Login")}>
-          <Text style={{ color: theme.colors.tint }}>Quay lại đăng nhập</Text>
+          <Text style={{ color: theme.colors.tint }}>{t("auth.forgotPassword.backToLogin")}</Text>
         </Pressable>
       </View>
     </Screen>

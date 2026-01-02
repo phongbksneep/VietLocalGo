@@ -119,8 +119,8 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
           />
 
           <TextField
-            label="Email"
-            placeholder="Nhập email"
+            label={t("editProfile.fields.email")}
+            placeholder={t("editProfile.placeholders.email")}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -129,8 +129,8 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
           />
 
           <TextField
-            label="Số điện thoại"
-            placeholder="Nhập số điện thoại"
+            label={t("editProfile.fields.phone")}
+            placeholder={t("editProfile.placeholders.phone")}
             value={phone}
             onChangeText={setPhone}
             keyboardType="phone-pad"
@@ -138,8 +138,8 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
           />
 
           <TextField
-            label="Giới thiệu bản thân"
-            placeholder="Viết vài dòng về bạn..."
+            label={t("editProfile.fields.bio")}
+            placeholder={t("editProfile.placeholders.bio")}
             value={bio}
             onChangeText={setBio}
             multiline
@@ -157,7 +157,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
           </View>
           <View style={[$divider, { backgroundColor: theme.colors.border }]} />
           <View style={$infoRow}>
-            <Text style={{ color: theme.colors.textDim }}>Số bài viết</Text>
+            <Text style={{ color: theme.colors.textDim }}>{t("editProfile.info.posts")}</Text>
             <Text preset="bold">12</Text>
           </View>
           <View style={[$divider, { backgroundColor: theme.colors.border }]} />
@@ -170,7 +170,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
         {/* Danger Zone */}
         <View style={$dangerSection}>
           <Text preset="formLabel" style={$dangerTitle}>
-            Vùng nguy hiểm
+            {t("editProfile.dangerTitle")}
           </Text>
           <Pressable
             style={[$dangerButton, { borderColor: theme.colors.error }]}
@@ -178,7 +178,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
             accessibilityLabel="delete-account-button"
           >
             <Icon icon="x" size={18} color={theme.colors.error} />
-            <Text style={{ color: theme.colors.error }}>Xóa tài khoản</Text>
+            <Text style={{ color: theme.colors.error }}>{t("editProfile.deleteAccount")}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -192,7 +192,7 @@ export const EditProfileScreen: FC<EditProfileScreenProps> = ({ navigation }) =>
       >
         <Button
           preset="filled"
-          text={isSubmitting ? "Đang lưu..." : "Lưu thay đổi"}
+          text={isSubmitting ? t("editProfile.saving") : t("editProfile.save")}
           style={$submitButton}
           onPress={handleSubmit}
           disabled={!isValid || isSubmitting}
