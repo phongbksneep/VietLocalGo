@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -84,6 +85,7 @@ type TabType = "upcoming" | "completed" | "cancelled"
 
 export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t, i18n } = useTranslation()
 
   const [activeTab, setActiveTab] = useState<TabType>("upcoming")
   const [bookings, setBookings] = useState<Booking[]>([])
@@ -127,19 +129,19 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
   const getStatusLabel = (status: Booking["status"]) => {
     switch (status) {
       case "pending":
-        return "Chờ xác nhận"
+        return t("bookingHistory.status.pending")
       case "confirmed":
-        return "Đã xác nhận"
+        return t("bookingHistory.status.confirmed")
       case "completed":
-        return "Hoàn thành"
+        return t("bookingHistory.status.completed")
       case "cancelled":
-        return "Đã hủy"
+        return t("bookingHistory.status.cancelled")
     }
   }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString("vi-VN", {
+    return date.toLocaleDateString(i18n.language || "vi-VN", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
@@ -181,14 +183,14 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
           <View style={$detailRow}>
             <Icon icon="community" size={14} color={theme.colors.textDim} />
             <Text size="xs" style={{ color: theme.colors.textDim }}>
-              {item.people} người
+              {t("bookingHistory.people", { count: item.people })}
             </Text>
           </View>
         </View>
 
         <View style={$cardFooter}>
           <Text preset="bold" style={{ color: theme.colors.tint }}>
-            {item.totalPrice.toLocaleString("vi-VN")}đ
+            {item.totalPrice.toLocaleString(i18n.language || "vi-VN")}đ
           </Text>
           <Icon icon="caretRight" size={18} color={theme.colors.textDim} />
         </View>
@@ -208,14 +210,18 @@ export const BookingHistoryScreen: FC<BookingHistoryScreenProps> = ({ navigation
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Lịch sử đặt tour</Text>
+        <Text preset="heading">{t("bookingHistory.title")}</Text>
         <View style={$spacer} />
       </View>
 
       {/* Tabs */}
       <View style={[$tabsContainer, { backgroundColor: theme.colors.background }]}>
         {(["upcoming", "completed", "cancelled"] as TabType[]).map((tab) => {
-          const labels = { upcoming: "Sắp tới", completed: "Hoàn thành", cancelled: "Đã hủy" }
+          const labels = {
+            upcoming: t("bookingHistory.tabs.upcoming"),
+            completed: t("bookingHistory.tabs.completed"),
+            cancelled: t("bookingHistory.tabs.cancelled"),
+          }
           const isActive = activeTab === tab
           return (
             <Pressable

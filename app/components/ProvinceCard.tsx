@@ -14,6 +14,7 @@ import {
   View,
   ViewStyle,
 } from "react-native"
+import { useTranslation } from "react-i18next"
 
 import { useAppTheme } from "@/theme/context"
 import type { ThemedStyle } from "@/theme/types"
@@ -36,6 +37,7 @@ export interface ProvinceCardProps {
 export const ProvinceCard = memo(function ProvinceCard(props: ProvinceCardProps) {
   const { name, image, placeCount, tourCount, region, onPress, variant = "default", style } = props
   const { themed, theme } = useAppTheme()
+  const { t } = useTranslation()
 
   if (variant === "featured") {
     return (
@@ -54,11 +56,11 @@ export const ProvinceCard = memo(function ProvinceCard(props: ProvinceCardProps)
             <View style={$statsRow}>
               <View style={$stat}>
                 <Icon icon="pin" size={12} color={theme.colors.background} />
-                <Text style={themed($statText)}>{placeCount} địa điểm</Text>
+                <Text style={themed($statText)}>{t("province.places", { count: placeCount })}</Text>
               </View>
               <View style={$stat}>
                 <Icon icon="components" size={12} color={theme.colors.background} />
-                <Text style={themed($statText)}>{tourCount} tours</Text>
+                <Text style={themed($statText)}>{t("province.tours", { count: tourCount })}</Text>
               </View>
             </View>
           </View>
@@ -82,7 +84,7 @@ export const ProvinceCard = memo(function ProvinceCard(props: ProvinceCardProps)
           {name}
         </Text>
         <Text style={themed($stats)}>
-          {placeCount} địa điểm • {tourCount} tours
+          {`${t("province.places", { count: placeCount })} • ${t("province.tours", { count: tourCount })}`}
         </Text>
       </View>
     </Pressable>

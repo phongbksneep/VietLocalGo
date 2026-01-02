@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -78,6 +79,7 @@ const mockNotifications: Notification[] = [
 
 export const NotificationsScreen: FC<NotificationsScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t, i18n } = useTranslation()
 
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [loading, setLoading] = useState(true)
@@ -146,17 +148,21 @@ export const NotificationsScreen: FC<NotificationsScreenProps> = ({ navigation }
     const date = new Date(dateString)
     const now = new Date()
     const diff = now.getTime() - date.getTime()
+    const minutes = Math.floor(diff / (1000 * 60))
     const hours = Math.floor(diff / (1000 * 60 * 60))
     const days = Math.floor(hours / 24)
 
-    if (hours < 1) return "Vừa xong"
-    if (hours < 24) return `${hours} giờ trước`
-    if (days < 7) return `${days} ngày trước`
-    return date.toLocaleDateString("vi-VN")
+    if (minutes < 1) return t("notifications.time.justNow")
+    if (minutes < 60) return t("notifications.time.minutesAgo", { count: minutes })
+    if (hours < 24) return t("notifications.time.hoursAgo", { count: hours })
+    if (days < 7) return t("notifications.time.daysAgo", { count: days })
+    return date.toLocaleDateString(i18n.language || "vi-VN")
   }
 
   const renderNotification = ({ item }: { item: Notification }) => (
     <Pressable
+      testID={`notification-${item.id}`}
+      accessibilityLabel={`notification-${item.id}`}
       style={[
         $notificationItem,
         {
@@ -197,18 +203,26 @@ export const NotificationsScreen: FC<NotificationsScreenProps> = ({ navigation }
   return (
     <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$container}>
       {/* Header */}
-      <View style={[$header, { backgroundColor: theme.colors.background }]}>
+      <View
+        style={[$header, { backgroundColor: theme.colors.background }]}
+        testID="notifications-screen"
+      >
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Thông báo</Text>
+        <Text preset="heading">{t("notifications.title")}</Text>
         <View style={$spacer} />
       </View>
 
       {/* Unread count */}
       {unreadCount > 0 && (
-        <View style={[$unreadBanner, { backgroundColor: theme.colors.palette.primary100 }]}>
-          <Text style={{ color: theme.colors.tint }}>{unreadCount} thông báo chưa đọc</Text>
+        <View
+          style={[$unreadBanner, { backgroundColor: theme.colors.palette.primary100 }]}
+          testID="notifications-unread-banner"
+        >
+          <Text style={{ color: theme.colors.tint }}>
+            {t("notifications.unreadCount", { count: unreadCount })}
+          </Text>
         </View>
       )}
 
@@ -226,7 +240,7 @@ export const NotificationsScreen: FC<NotificationsScreenProps> = ({ navigation }
           ListEmptyComponent={
             <View style={$emptyContainer}>
               <Icon icon="bell" size={64} color={theme.colors.border} />
-              <Text style={{ color: theme.colors.textDim }}>Không có thông báo</Text>
+              <Text style={{ color: theme.colors.textDim }}>{t("notifications.empty.title")}</Text>
             </View>
           }
         />

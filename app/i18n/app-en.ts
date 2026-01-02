@@ -258,6 +258,8 @@ const appEn = {
       comment: "Comment",
       share: "Share",
       comments: "{{count}} comments",
+      commentsEmpty: "No comments yet",
+      writeCommentPlaceholder: "Write a comment...",
       likes: "{{count}} likes",
       shares: "{{count}} shares",
       readMore: "Read more",
@@ -295,6 +297,14 @@ const appEn = {
       bookingHistory: "Booking History",
       savedPlaces: "Saved",
       myReviews: "My Reviews",
+      myReviewsScreen: {
+        empty: {
+          title: "No reviews yet",
+          subtitle: "Share your experience with the community",
+        },
+        avgRating: "Avg rating",
+        helpful: "Helpful",
+      },
       notifications: "Notifications",
       privacy: "Privacy",
       feedback: "Feedback",
@@ -556,6 +566,18 @@ const appEn = {
       writeReview: "Write Review",
       bookAgain: "Book Again",
     },
+    people: "{{count}} people",
+  },
+
+  // Province / Cards
+  province: {
+    places: "{{count}} places",
+    tours: "{{count}} tours",
+  },
+
+  // Image Gallery
+  imageGallery: {
+    empty: "No images",
   },
 
   // Saved Places
@@ -565,6 +587,7 @@ const appEn = {
       places: "Places",
       tours: "Tours",
     },
+    savedCount: "{{count}} saved places",
     empty: {
       title: "No saved items",
       subtitle: "Save your favorite places and tours",

@@ -258,6 +258,8 @@ const vi = {
       comment: "Bình luận",
       share: "Chia sẻ",
       comments: "{{count}} bình luận",
+      commentsEmpty: "Chưa có bình luận nào",
+      writeCommentPlaceholder: "Viết bình luận...",
       likes: "{{count}} lượt thích",
       shares: "{{count}} lượt chia sẻ",
       readMore: "Xem thêm",
@@ -294,6 +296,14 @@ const vi = {
       bookingHistory: "Lịch sử đặt tour",
       savedPlaces: "Đã lưu",
       myReviews: "Đánh giá của tôi",
+      myReviewsScreen: {
+        empty: {
+          title: "Chưa có đánh giá nào",
+          subtitle: "Chia sẻ trải nghiệm của bạn với cộng đồng",
+        },
+        avgRating: "TB sao",
+        helpful: "Hữu ích",
+      },
       notifications: "Thông báo",
       privacy: "Quyền riêng tư",
       feedback: "Phản hồi",
@@ -552,6 +562,18 @@ const vi = {
       writeReview: "Viết đánh giá",
       bookAgain: "Đặt lại",
     },
+    people: "{{count}} người",
+  },
+
+  // Province / Cards
+  province: {
+    places: "{{count}} địa điểm",
+    tours: "{{count}} tour",
+  },
+
+  // Image Gallery
+  imageGallery: {
+    empty: "Chưa có ảnh",
   },
 
   // Saved Places
@@ -561,6 +583,7 @@ const vi = {
       places: "Địa điểm",
       tours: "Tour",
     },
+    savedCount: "Đã lưu {{count}} địa điểm",
     empty: {
       title: "Chưa có mục đã lưu",
       subtitle: "Lưu địa điểm và tour yêu thích của bạn",

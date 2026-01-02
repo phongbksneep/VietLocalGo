@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -81,6 +82,7 @@ const mockReviews: MyReview[] = [
 
 export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [reviews, setReviews] = useState<MyReview[]>([])
   const [loading, setLoading] = useState(true)
@@ -259,7 +261,7 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
               {(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)}
             </Text>
             <Text size="xs" style={{ color: theme.colors.textDim }}>
-              TB sao
+              {t("myReviewsScreen.avgRating")}
             </Text>
           </View>
           <View style={[$statDivider, { backgroundColor: theme.colors.border }]} />
@@ -268,7 +270,7 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
               {reviews.reduce((sum, r) => sum + r.helpful, 0)}
             </Text>
             <Text size="xs" style={{ color: theme.colors.textDim }}>
-              hữu ích
+              {t("myReviewsScreen.helpful")}
             </Text>
           </View>
         </View>
@@ -289,10 +291,10 @@ export const MyReviewsScreen: FC<MyReviewsScreenProps> = ({ navigation }) => {
             <View style={$emptyContainer}>
               <Icon icon="heart" size={64} color={theme.colors.border} />
               <Text preset="subheading" style={{ color: theme.colors.textDim }}>
-                Chưa có đánh giá nào
+                {t("myReviewsScreen.empty.title")}
               </Text>
               <Text style={[$emptySubtext, { color: theme.colors.textDim }]}>
-                Chia sẻ trải nghiệm của bạn với cộng đồng
+                {t("myReviewsScreen.empty.subtitle")}
               </Text>
             </View>
           }

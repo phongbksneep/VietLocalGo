@@ -12,6 +12,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -27,6 +28,7 @@ type PostDetailsScreenProps = NativeStackScreenProps<AppStackParamList, "PostDet
 export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, route }) => {
   const { postId } = route.params
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [post, setPost] = useState<Post | null>(null)
   const [loading, setLoading] = useState(true)
@@ -252,7 +254,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
         {/* Comments Section */}
         <View style={$commentsSection}>
           <Text preset="subheading" style={$commentsTitle}>
-            Bình luận ({post.comments.length})
+            {t("post.comments", { count: post.comments.length })}
           </Text>
           <FlatList
             data={post.comments}
@@ -262,7 +264,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
             ItemSeparatorComponent={() => <View style={$commentSeparator} />}
             ListEmptyComponent={
               <View style={$emptyComments}>
-                <Text style={{ color: theme.colors.textDim }}>Chưa có bình luận nào</Text>
+                <Text style={{ color: theme.colors.textDim }}>{t("post.commentsEmpty")}</Text>
               </View>
             }
           />
@@ -279,7 +281,7 @@ export const PostDetailsScreen: FC<PostDetailsScreenProps> = ({ navigation, rout
         <TextField
           containerStyle={$commentFieldContainer}
           inputWrapperStyle={$commentFieldWrapper}
-          placeholder="Viết bình luận..."
+          placeholder={t("post.writeCommentPlaceholder")}
           value={commentText}
           onChangeText={setCommentText}
           onSubmitEditing={handleComment}

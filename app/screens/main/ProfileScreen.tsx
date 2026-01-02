@@ -84,6 +84,7 @@ export function ProfileScreen() {
       style={[themed($menuItem), !isLast && themed($menuItemBorder)]}
       onPress={() => (item.onPress ? item.onPress() : handleMenuPress(item.id))}
       accessibilityLabel={`profile-menu-${item.id}`}
+      testID={`profile-menu-${item.id}`}
     >
       <View style={themed($menuIconContainer)}>
         <Icon icon={item.icon} size={18} color={theme.colors.tint} />

@@ -10,6 +10,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 
 import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
@@ -23,6 +24,7 @@ type SavedPlacesScreenProps = NativeStackScreenProps<AppStackParamList, "SavedPl
 
 export const SavedPlacesScreen: FC<SavedPlacesScreenProps> = ({ navigation }) => {
   const { theme } = useAppTheme()
+  const { t } = useTranslation()
 
   const [savedPlaces, setSavedPlaces] = useState<Place[]>([])
   const [loading, setLoading] = useState(true)
@@ -92,7 +94,7 @@ export const SavedPlacesScreen: FC<SavedPlacesScreenProps> = ({ navigation }) =>
         <Pressable onPress={() => navigation.goBack()} style={$backButton}>
           <Icon icon="back" size={24} color={theme.colors.text} />
         </Pressable>
-        <Text preset="heading">Đã lưu</Text>
+        <Text preset="heading">{t("savedPlaces.title")}</Text>
         <View style={$spacer} />
       </View>
 
@@ -100,7 +102,9 @@ export const SavedPlacesScreen: FC<SavedPlacesScreenProps> = ({ navigation }) =>
       {!loading && savedPlaces.length > 0 && (
         <View style={[$statsBar, { backgroundColor: theme.colors.palette.primary100 }]}>
           <Icon icon="heart" size={16} color={theme.colors.tint} />
-          <Text style={{ color: theme.colors.tint }}>{savedPlaces.length} địa điểm đã lưu</Text>
+          <Text style={{ color: theme.colors.tint }}>
+            {t("savedPlaces.savedCount", { count: savedPlaces.length })}
+          </Text>
         </View>
       )}
 
@@ -119,16 +123,16 @@ export const SavedPlacesScreen: FC<SavedPlacesScreenProps> = ({ navigation }) =>
             <View style={$emptyContainer}>
               <Icon icon="heart" size={64} color={theme.colors.border} />
               <Text preset="subheading" style={{ color: theme.colors.textDim }}>
-                Chưa có địa điểm nào
+                {t("savedPlaces.empty.title")}
               </Text>
               <Text style={[$emptySubtext, { color: theme.colors.textDim }]}>
-                Lưu các địa điểm yêu thích để xem lại sau
+                {t("savedPlaces.empty.subtitle")}
               </Text>
               <Pressable
                 style={[$exploreButton, { backgroundColor: theme.colors.tint }]}
                 onPress={() => navigation.navigate("Main", { screen: "Explore" })}
               >
-                <Text style={$exploreButtonText}>Khám phá ngay</Text>
+                <Text style={$exploreButtonText}>{t("savedPlaces.empty.action")}</Text>
               </Pressable>
             </View>
           }

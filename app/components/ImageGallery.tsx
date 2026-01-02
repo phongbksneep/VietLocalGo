@@ -11,6 +11,7 @@ import {
   View,
   ViewStyle,
 } from "react-native"
+import { useTranslation } from "react-i18next"
 
 import { spacing } from "@/theme/spacing"
 
@@ -45,6 +46,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [fullscreenVisible, setFullscreenVisible] = useState(false)
+  const { t } = useTranslation()
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffset = event.nativeEvent.contentOffset.x
@@ -82,7 +84,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({
     return (
       <View style={[$emptyContainer, style]}>
         <Icon icon="view" size={48} color="#BDBDBD" />
-        <Text style={$emptyText}>Chưa có ảnh</Text>
+        <Text style={$emptyText}>{t("imageGallery.empty")}</Text>
       </View>
     )
   }
