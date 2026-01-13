@@ -755,6 +755,139 @@ const appEn = {
     vnd: "₫",
     format: "{{amount}}₫",
   },
+
+  // Language Screen
+  language: {
+    title: "Language",
+    description: "Choose your preferred display language",
+    info: "Language changes will be applied immediately across the entire app.",
+  },
+
+  // Privacy Screen
+  privacy: {
+    title: "Privacy",
+    settingsTitle: "Privacy Settings",
+    policyTitle: "Privacy Policy",
+    dataTitle: "Data Management",
+    settings: {
+      location: {
+        title: "Share Location",
+        description: "Allow the app to access your location to suggest nearby places",
+      },
+      activity: {
+        title: "Share Activity",
+        description: "Allow friends to see your activity on the app",
+      },
+      ads: {
+        title: "Personalized Ads",
+        description: "Receive ads based on your interests and activity",
+      },
+    },
+    policyContent:
+      "VietLocalGo is committed to protecting your privacy. We collect and process personal data transparently, only for the purpose of improving user experience and providing better services.",
+    downloadData: "Download my data",
+    deleteData: "Delete all data",
+    lastUpdated: "Last updated",
+  },
+
+  // Help & Support Screen
+  helpSupport: {
+    title: "Help & Support",
+    contactTitle: "Contact Support",
+    faqTitle: "Frequently Asked Questions",
+    quickLinks: "Quick Links",
+    contact: {
+      phone: {
+        title: "Hotline",
+        subtitle: "24/7",
+      },
+      email: {
+        title: "Support Email",
+        subtitle: "Response within 24h",
+      },
+      chat: {
+        title: "Live Chat",
+        subtitle: "Chat with support agent",
+      },
+    },
+    faq: {
+      booking: {
+        question: "How to book a tour?",
+        answer:
+          "You can book a tour by selecting your preferred tour, choosing date and number of guests, then proceed to payment. You will receive confirmation via email and in-app notification.",
+      },
+      cancel: {
+        question: "What is the cancellation policy?",
+        answer:
+          "You can cancel for free within 24 hours of booking. Cancel 7+ days before departure for 80% refund. Cancel within 7 days for 50% refund.",
+      },
+      payment: {
+        question: "What payment methods are supported?",
+        answer:
+          "We support bank cards, e-wallets (MoMo, ZaloPay, VNPay), and bank transfers.",
+      },
+      guide: {
+        question: "How to become a guide?",
+        answer:
+          "You can register as a guide in Account > Become a Guide. We will review and contact you within 3-5 business days.",
+      },
+    },
+    links: {
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+    },
+  },
+
+  // Feedback Screen
+  feedback: {
+    title: "Feedback",
+    description:
+      "We value your feedback. Every suggestion helps us improve the app.",
+    typeLabel: "Feedback Type",
+    types: {
+      bug: "Bug",
+      feature: "New Feature",
+      improvement: "Improvement",
+      other: "Other",
+    },
+    titleLabel: "Title",
+    titlePlaceholder: "Briefly describe the issue or suggestion",
+    descriptionLabel: "Detailed Description",
+    descriptionPlaceholder: "Please describe in detail so we can better understand...",
+    emailLabel: "Contact Email (optional)",
+    emailPlaceholder: "email@example.com",
+    emailHelper: "Leave your email if you want us to respond",
+    info: "Your feedback will be sent to the development team and processed as soon as possible.",
+    submit: "Submit Feedback",
+    submitting: "Submitting...",
+    successTitle: "Submitted Successfully!",
+    successMessage: "Thank you for your feedback. We will review and improve the app.",
+  },
+
+  // About Screen
+  about: {
+    title: "About",
+    tagline: "Discover Vietnam your way",
+    version: "Version",
+    description:
+      "VietLocalGo is an app that helps you explore local cuisine and tourism in Vietnam. Connect with local guides, share experiences, and find the best places.",
+    featuresTitle: "Key Features",
+    features: {
+      explore: "Explore tourist spots and cuisine",
+      food: "Find local delicious food",
+      guides: "Connect with local guides",
+      community: "Share experiences with community",
+    },
+    followUs: "Follow Us",
+    legalTitle: "Legal",
+    links: {
+      terms: "Terms of Service",
+      privacy: "Privacy Policy",
+      licenses: "Open Source Licenses",
+    },
+    madeWith: "Made with ❤️ in Vietnam",
+    allRights: "All rights reserved.",
+  },
 }
 
 export default appEn

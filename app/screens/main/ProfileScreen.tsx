@@ -73,6 +73,16 @@ export function ProfileScreen() {
         return navigation.navigate("MyReviews" as never)
       case "notifications":
         return navigation.navigate("Notifications" as never)
+      case "language":
+        return navigation.navigate("Language" as never)
+      case "privacy":
+        return navigation.navigate("Privacy" as never)
+      case "help":
+        return navigation.navigate("HelpSupport" as never)
+      case "feedback":
+        return navigation.navigate("Feedback" as never)
+      case "about":
+        return navigation.navigate("About" as never)
       default:
         return navigation.navigate("Settings" as never)
     }

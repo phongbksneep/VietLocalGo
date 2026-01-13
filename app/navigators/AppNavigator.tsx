@@ -40,6 +40,11 @@ import {
   NotificationsScreen,
   SavedPlacesScreen,
   SettingsScreen,
+  LanguageScreen,
+  PrivacyScreen,
+  HelpSupportScreen,
+  FeedbackScreen,
+  AboutScreen,
   // Error
   ErrorBoundary,
 } from "@/screens"
@@ -112,6 +117,11 @@ const AppStack = () => {
         <Stack.Screen name="SavedPlaces" component={SavedPlacesScreen} />
         <Stack.Screen name="MyReviews" component={MyReviewsScreen} />
         <Stack.Screen name="GuideList" component={GuideListScreen} />
+        <Stack.Screen name="Language" component={LanguageScreen} />
+        <Stack.Screen name="Privacy" component={PrivacyScreen} />
+        <Stack.Screen name="HelpSupport" component={HelpSupportScreen} />
+        <Stack.Screen name="Feedback" component={FeedbackScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Group>
     </Stack.Navigator>
   )

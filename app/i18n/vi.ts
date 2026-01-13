@@ -736,6 +736,139 @@ const vi = {
     vnd: "đ",
     format: "{{amount}}đ",
   },
+
+  // Language Screen
+  language: {
+    title: "Ngôn ngữ",
+    description: "Chọn ngôn ngữ hiển thị cho ứng dụng",
+    info: "Thay đổi ngôn ngữ sẽ áp dụng ngay lập tức cho toàn bộ ứng dụng.",
+  },
+
+  // Privacy Screen
+  privacy: {
+    title: "Quyền riêng tư",
+    settingsTitle: "Cài đặt quyền riêng tư",
+    policyTitle: "Chính sách bảo mật",
+    dataTitle: "Quản lý dữ liệu",
+    settings: {
+      location: {
+        title: "Chia sẻ vị trí",
+        description: "Cho phép ứng dụng truy cập vị trí của bạn để gợi ý địa điểm gần đó",
+      },
+      activity: {
+        title: "Chia sẻ hoạt động",
+        description: "Cho phép bạn bè xem hoạt động của bạn trên ứng dụng",
+      },
+      ads: {
+        title: "Quảng cáo cá nhân hóa",
+        description: "Nhận quảng cáo dựa trên sở thích và hoạt động của bạn",
+      },
+    },
+    policyContent:
+      "VietLocalGo cam kết bảo vệ quyền riêng tư của bạn. Chúng tôi thu thập và xử lý dữ liệu cá nhân một cách minh bạch, chỉ sử dụng cho mục đích cải thiện trải nghiệm người dùng và cung cấp dịch vụ tốt hơn.",
+    downloadData: "Tải xuống dữ liệu của tôi",
+    deleteData: "Xóa tất cả dữ liệu",
+    lastUpdated: "Cập nhật lần cuối",
+  },
+
+  // Help & Support Screen
+  helpSupport: {
+    title: "Trợ giúp & Hỗ trợ",
+    contactTitle: "Liên hệ hỗ trợ",
+    faqTitle: "Câu hỏi thường gặp",
+    quickLinks: "Liên kết nhanh",
+    contact: {
+      phone: {
+        title: "Hotline",
+        subtitle: "24/7",
+      },
+      email: {
+        title: "Email hỗ trợ",
+        subtitle: "Phản hồi trong 24h",
+      },
+      chat: {
+        title: "Chat trực tuyến",
+        subtitle: "Nhắn tin với hỗ trợ viên",
+      },
+    },
+    faq: {
+      booking: {
+        question: "Làm thế nào để đặt tour?",
+        answer:
+          "Bạn có thể đặt tour bằng cách chọn tour yêu thích, chọn ngày và số người, sau đó tiến hành thanh toán. Bạn sẽ nhận được xác nhận qua email và thông báo trong ứng dụng.",
+      },
+      cancel: {
+        question: "Chính sách hủy tour như thế nào?",
+        answer:
+          "Bạn có thể hủy tour miễn phí trong vòng 24h sau khi đặt. Hủy trước 7 ngày khởi hành sẽ được hoàn 80% phí. Hủy trong vòng 7 ngày sẽ được hoàn 50%.",
+      },
+      payment: {
+        question: "Các phương thức thanh toán được hỗ trợ?",
+        answer:
+          "Chúng tôi hỗ trợ thanh toán qua thẻ ngân hàng, ví điện tử (MoMo, ZaloPay, VNPay), và chuyển khoản ngân hàng.",
+      },
+      guide: {
+        question: "Làm sao để trở thành hướng dẫn viên?",
+        answer:
+          "Bạn có thể đăng ký làm hướng dẫn viên trong mục Tài khoản > Trở thành hướng dẫn viên. Chúng tôi sẽ xem xét và liên hệ với bạn trong 3-5 ngày làm việc.",
+      },
+    },
+    links: {
+      privacy: "Chính sách bảo mật",
+      terms: "Điều khoản sử dụng",
+    },
+  },
+
+  // Feedback Screen
+  feedback: {
+    title: "Góp ý & Phản hồi",
+    description:
+      "Chúng tôi rất trân trọng ý kiến của bạn. Mọi góp ý sẽ giúp chúng tôi cải thiện ứng dụng tốt hơn.",
+    typeLabel: "Loại phản hồi",
+    types: {
+      bug: "Lỗi",
+      feature: "Tính năng mới",
+      improvement: "Cải thiện",
+      other: "Khác",
+    },
+    titleLabel: "Tiêu đề",
+    titlePlaceholder: "Mô tả ngắn gọn vấn đề hoặc đề xuất",
+    descriptionLabel: "Mô tả chi tiết",
+    descriptionPlaceholder: "Vui lòng mô tả chi tiết để chúng tôi hiểu rõ hơn...",
+    emailLabel: "Email liên hệ (tùy chọn)",
+    emailPlaceholder: "email@example.com",
+    emailHelper: "Để lại email nếu bạn muốn chúng tôi phản hồi",
+    info: "Phản hồi của bạn sẽ được gửi đến đội ngũ phát triển và được xử lý trong thời gian sớm nhất.",
+    submit: "Gửi phản hồi",
+    submitting: "Đang gửi...",
+    successTitle: "Gửi thành công!",
+    successMessage: "Cảm ơn bạn đã góp ý. Chúng tôi sẽ xem xét và cải thiện ứng dụng.",
+  },
+
+  // About Screen
+  about: {
+    title: "Về ứng dụng",
+    tagline: "Khám phá Việt Nam theo cách của bạn",
+    version: "Phiên bản",
+    description:
+      "VietLocalGo là ứng dụng giúp bạn khám phá ẩm thực và du lịch địa phương Việt Nam. Kết nối với hướng dẫn viên bản địa, chia sẻ trải nghiệm và tìm kiếm những địa điểm tuyệt vời nhất.",
+    featuresTitle: "Tính năng nổi bật",
+    features: {
+      explore: "Khám phá địa điểm du lịch và ẩm thực",
+      food: "Tìm kiếm món ăn ngon địa phương",
+      guides: "Kết nối với hướng dẫn viên bản địa",
+      community: "Chia sẻ trải nghiệm với cộng đồng",
+    },
+    followUs: "Theo dõi chúng tôi",
+    legalTitle: "Pháp lý",
+    links: {
+      terms: "Điều khoản sử dụng",
+      privacy: "Chính sách bảo mật",
+      licenses: "Giấy phép mã nguồn mở",
+    },
+    madeWith: "Được phát triển với ❤️ tại Việt Nam",
+    allRights: "Bảo lưu mọi quyền.",
+  },
 }
 
 export default vi

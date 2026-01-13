@@ -71,6 +71,11 @@ export type AppStackParamList = {
   SavedPlaces: undefined
   MyReviews: undefined
   GuideList: { provinceId?: string }
+  Language: undefined
+  Privacy: undefined
+  HelpSupport: undefined
+  Feedback: undefined
+  About: undefined
   // Legacy
   Welcome: undefined
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
